@@ -53,6 +53,6 @@ class User extends Authenticatable
      */
     public function username()
     {
-        return 'username';  // <--- ¡Añade este método!
+        return 'username';
     }
 }

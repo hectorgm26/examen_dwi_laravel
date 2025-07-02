@@ -14,8 +14,7 @@ class UserController extends Controller
     public function showFormRegistro()
     {
         if (Auth::check()) {
-            // Si el usuario ya está autenticado, redirígelo a la página principal
-            // o a su dashboard.
+            // Verifica si el el usuario ya está autenticado
             return redirect()->route('/')->with('success', 'Tiene una sesión iniciada, ciérrela para crear una nueva.');
         }
 
@@ -96,23 +95,5 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('/')->with('success', 'Sesión cerrada exitosamente.');
-    }
-
-    public function formRegister(Request $_request)
-    {
-        $datos = [
-            'instruccion' => 'Ingrese Credenciales'
-        ];
-
-        return view('backoffice/users/login', $datos);
-
-        /*
-         * $_request->validate([
-         *     'username' => 'required|string|max:20',
-         *     'password' => 'required|string|min:6|max:8'
-         * ]);
-         *
-         * User::create($_request->all());
-         */
     }
 }

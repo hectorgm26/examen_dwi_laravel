@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-// se importa la clase controladora
 use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
@@ -15,4 +14,3 @@ Route::get('/backoffice/create-user', [UserController::class, 'showFormRegistro'
 Route::post('/backoffice/create-user', [UserController::class, 'guardarNuevo'])->name('user.form.registro');
 
 Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logout');
-
