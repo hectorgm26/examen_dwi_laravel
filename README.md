@@ -43,6 +43,10 @@ Nos permitirá acceder a la vista de registro, debemos colocar la misma organiza
 Tendremos una variable $datos que nos permitirá pasar datos a la vista, inicialmente dejaremos una instrucción.
 
 ```php
+use Illuminate\Support\Facades\Auth;
+```
+
+```php
 public function showFormRegistro()
 {
     if (Auth::check()) {
