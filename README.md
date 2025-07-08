@@ -88,6 +88,9 @@ abstract class Controller
 3. Se redirige a la ruta definida
 
 ```php
+use Illuminate\Validation\Rules\Password;  // Importar la clase Password
+```
+```php
 public function guardarNuevo(Request $request)
 {
     // 1. Validación de los datos del formulario
