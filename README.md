@@ -412,7 +412,9 @@ APP_URL=https://9000-firebase-ipss-dwi-25-2-clases-1751379241939.cluster-etsqrqv
 
 Modificamos el archivo app/Providers/AppServiceProvider.php
 la función boot debe quedar de esta manera:
-
+```php
+use Illuminate\Support\Facades\URL;
+```
 ```php
 public function boot(): void
 {
