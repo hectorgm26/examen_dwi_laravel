@@ -88,6 +88,10 @@ abstract class Controller
 3. Se redirige a la ruta definida
 
 ```php
+use App\Models\User;  // Importar el modelo User
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;  // Importar la fachada Hash
 use Illuminate\Validation\Rules\Password;  // Importar la clase Password
 ```
 ```php
