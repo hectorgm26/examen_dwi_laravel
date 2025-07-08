@@ -174,20 +174,6 @@ public function logout(Request $request)
 }
 ```
 
-##### 1.g logout en UserController.php
-
-Es la acción de desloguear. Cerrará la sesión eliminando el token actual.
-
-```php
-public function logout(Request $request)
-{
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
-    return redirect()->route('/')->with('success', 'Sesión cerrada exitosamente.');
-}
-```
-
 #### 2. Modificaremos el Modelo del Usuario
 
 En el archivo app/Models/User.php
