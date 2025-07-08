@@ -424,16 +424,17 @@ public function boot(): void
     }
 }
 ```
+### Configuración Base de datos
 
-### Finalmente
+#### 1. Eliminar el archivo en database/database.sqlite
 
-Eliminamos el archivo de la base de datos database/database.sqlite y volvemos a crear la migración
+#### 2. Migrar la base de datos para que se cree
 
 ```bash
 php artisan migrate
 ```
 
-#### Windows
+#### 2.1 En Windows
 
 Volver a levantar Laravel
 
