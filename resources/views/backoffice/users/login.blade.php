@@ -98,7 +98,8 @@
                 fill="currentColor" />
             </svg>
           </span> -->
-          <img src="{{$textos['logo']}}" width="100px">
+          <img src="{{ $dev['logo'] }}" alt="" srcset="">
+          <img src="{{ $textos['logo'] }}" width="100px">
         </span>
         <span class="app-brand-text demo text-heading fw-bold">{{$textos['nombre']}}</span>
       </a>
@@ -126,6 +127,9 @@
         <!-- Login -->
         <div class="d-flex col-12 col-xl-4 align-items-center authentication-bg p-sm-12 p-6">
           <div class="w-px-400 mx-auto mt-12 pt-5">
+            <div class="text-center mb-4">
+                <img src="{{$textos['logo']}}" alt="logo" width="150px">
+            </div>
             <h4 class="mb-1">{{ $textos['formulario']['titulo'] }}</h4>
             <p class="mb-6">{{ $textos['formulario']['instruccion'] }}</p>
             @if (session('success'))
@@ -190,11 +194,11 @@
             </p>
 
             <div class="divider my-6">
-              <div class="divider-text">Desarrollado 2025</div>
+              <div class="divider-text">Desarrollo Web I</div>
             </div>
 
             <div class="d-flex justify-content-center">
-              <a href="{{ $dev['url'] }}" target="_blank">{{ $dev['nombre'] }}</a>
+              <a href="{{ $dev['url'] }}" target="_blank"><img src="{{ $dev['logo'] }}" alt="{{ $dev['nombre'] }}"> </a>
             </div>
           </div>
         </div>

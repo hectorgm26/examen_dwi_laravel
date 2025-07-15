@@ -65,7 +65,7 @@ class UserController extends Controller
             'dev' => [
                 'nombre' => 'Instituto Profesional San Sebastián',
                 'url' => 'https://www.ipss.cl',
-                'logo' => ''
+                'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
             ]
         ];
 
