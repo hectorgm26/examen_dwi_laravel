@@ -55,7 +55,7 @@ class UserController extends Controller
         $datos = [
             'textos' => [
                 'titulo' => 'Iniciar Sesión | Sonkei FC',
-                'logo' => '',
+                'logo' => '/assets/imgs/logo_sonkei_v2.webp',
                 'nombre' => 'Sonkei FC',
                 'formulario' => [
                     'titulo' => 'Bienvenido a Sonkei FC ⚽️',
