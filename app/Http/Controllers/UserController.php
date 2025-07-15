@@ -53,7 +53,20 @@ class UserController extends Controller
     public function showFormLogin()
     {
         $datos = [
-            'instruccion' => 'Ingrese Credenciales'
+            'textos' => [
+                'titulo' => 'Iniciar Sesión | Sonkei FC',
+                'logo' => '',
+                'nombre' => 'Sonkei FC',
+                'formulario' => [
+                    'titulo' => 'Bienvenido a Sonkei FC ⚽️',
+                    'instruccion' => 'Ingrese Credenciales'
+                ],
+            ],
+            'dev' => [
+                'nombre' => 'Instituto Profesional San Sebastián',
+                'url' => 'https://www.ipss.cl',
+                'logo' => ''
+            ]
         ];
 
         if (Auth::check()) {
