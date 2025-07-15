@@ -445,3 +445,84 @@ php artisan serve
 #### Studio Firebase
 
 Recargar la página de la URL del proyecto.
+
+
+# Después de Clonar el repo
+
+Instalar las dependencias de composer
+
+```bash
+composer install
+```
+
+Copiar el entorno
+
+```bash
+cp .env.example .env
+```
+
+Generar la llave
+
+```bash
+php artisan key:generate
+```
+
+Reemplazar la URL del entorno por la que nos entrega Firebase
+
+https://9000-firebase-dwi-25-2-clases-1752585818839.cluster-qhrn7lb3szcfcud6uanedbkjnm.cloudworkstations.dev
+
+Migrar la base de datos
+
+```bash
+php artisan migrate
+```
+Preguntará si queremos crear la base de datos sqlite, respondemos YES
+
+----
+
+# Incorporar Vuexy como template
+
+## 1. Crear la carpeta vuexy en public
+
+```bash
+mkdir public/vuexy
+```
+
+## 2. Subir las carpetas comprimidas en vuexy
+
+2.1 assets.zip
+2.2 dist.zip
+2.3 fonts.zip
+
+## 3. En la consola descomprimir los archivos
+
+```bash
+unzip assets.zip
+```
+```bash
+unzip dist.zip
+```
+```bash
+unzip fonts.zip
+```
+
+## 4. Borrar los archivos .zip
+
+```bash
+rm assets.zip
+```
+```bash
+rm dist.zip
+```
+```bash
+rm fonts.zip
+```
+```bash
+rm -rf __MACOSX
+```
+
+## Si ya tienen clonado el repositorio:
+
+```bash
+git pull
+```
