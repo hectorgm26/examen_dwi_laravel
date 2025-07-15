@@ -19,8 +19,22 @@ class UserController extends Controller
         }
 
         $datos = [
-            'instruccion' => 'Registre Credenciales del nuevo usuario'
+            'textos' => [
+                'titulo' => 'Iniciar Sesión | Sonkei FC',
+                'logo' => '/assets/imgs/logo_sonkei_v2.webp',
+                'nombre' => 'Sonkei FC',
+                'formulario' => [
+                    'titulo' => 'Registro Sonkei FC ⚽️',
+                    'instruccion' => 'Ingrese sus datos para registrarse en el sistema'
+                ],
+            ],
+            'dev' => [
+                'nombre' => 'Instituto Profesional San Sebastián',
+                'url' => 'https://www.ipss.cl',
+                'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
+            ]
         ];
+        
         return view('backoffice/users/registro', $datos);
     }
 
