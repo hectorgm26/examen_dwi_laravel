@@ -19,8 +19,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'username',
+        'lastname',
+        'rut',
         'password',
+        'rol',
     ];
 
     /**
@@ -51,8 +53,8 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function username()
+    public function rut()
     {
-        return 'username';
+        return 'rut';
     }
 }

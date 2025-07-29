@@ -14,7 +14,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0" />
 
-    <title>Demo: Register Cover - Pages | Vuexy - Bootstrap Dashboard PRO</title>
+    <title>{{ $textos['titulo']}}</title>
 
     <meta name="description" content="" />
 
@@ -110,18 +110,28 @@
             <form id="formAuthentication" class="mb-6" action="{{ route('user.form.registro') }}" method="POST">
             @csrf
               <div class="mb-6 form-control-validation">
-                <label for="name" class="form-label">Nombre completo</label>
+                <label for="name" class="form-label">Nombre</label>
                 <input
                   type="text"
                   class="form-control"
                   id="name"
                   name="name"
-                  placeholder="EJ: Juan Pérez Jackson"
+                  placeholder="EJ: Juan"
                   autofocus />
               </div>
               <div class="mb-6 form-control-validation">
-                <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="username" placeholder="Ingrese su email" required="required" />
+                <label for="lastname" class="form-label">Apellido</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lastname"
+                  name="lastname"
+                  placeholder="EJ: Pérez"
+                  />
+              </div>
+              <div class="mb-6 form-control-validation">
+                <label for="rut" class="form-label">Rut</label>
+                <input type="text" class="form-control" id="rut" name="rut" placeholder="Ingrese su RUT" required="required" />
               </div>
               <div class="mb-6 form-password-toggle form-control-validation">
                 <label class="form-label" for="password">Contraseña</label>

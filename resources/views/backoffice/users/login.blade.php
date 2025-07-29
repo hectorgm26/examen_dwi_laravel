@@ -113,14 +113,14 @@
             <form id="formAuthentication" class="mb-6" action="{{ route('user.form.login') }}" method="POST">    
                 @csrf
               <div class="mb-6 form-control-validation">
-                <label for="email" class="form-label">Usuario</label>
+                <label for="username" class="form-label">Usuario</label>
                 <input
-                  type="email"
+                  type="text"
                   class="form-control"
-                  id="email"
-                  name="username"
+                  id="username"
+                  name="rut"
                   placeholder="Ingrese su usuario"
-                  value="scabezas@ciisa.cl"
+                  value="12123123-1"
                   autofocus />
               </div>
               <div class="mb-6 form-password-toggle form-control-validation">

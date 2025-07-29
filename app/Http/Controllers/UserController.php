@@ -20,7 +20,7 @@ class UserController extends Controller
 
         $datos = [
             'textos' => [
-                'titulo' => 'Iniciar Sesión | Sonkei FC',
+                'titulo' => 'Registrar | Sonkei FC',
                 'logo' => '/assets/imgs/logo_sonkei_v2.webp',
                 'nombre' => 'Sonkei FC',
                 'formulario' => [
@@ -46,14 +46,16 @@ class UserController extends Controller
         // 2. Validación de los datos del formulario
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'email', 'min:8', 'max:50', 'unique:' . User::class],
+            'lastname' => ['required', 'string', 'max:255'],
+            'rut' => ['required', 'min:9', 'max:10', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Password::defaults()],
         ], $this->messages);
 
         // 3. Creación del nuevo usuario en la base de datos
         $user = User::create([
             'name' => $request->name,
-            'username' => $request->username,
+            'lastname' => $request->lastname,
+            'rut' => $request->rut,
             'password' => Hash::make($request->password),
         ]);
 
@@ -83,11 +85,13 @@ class UserController extends Controller
             ]
         ];
 
+        
         if (Auth::check()) {
             // Si el usuario ya está autenticado, redirígelo a la página principal
             // o a su dashboard.
             return redirect()->route('/')->with('success', 'Tiene una sesión iniciada, ciérrela para iniciar una nueva.');
         }
+        
 
         return view('backoffice/users/login', $datos);
     }
@@ -98,11 +102,11 @@ class UserController extends Controller
         // dd($request->all());
 
         $credentials = $request->validate([
-            'username' => ['required', 'email'],
+            'rut' => ['required'],
             'password' => ['required'],
         ]);
 
-        // dd($credentials);
+        //dd($credentials);
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
