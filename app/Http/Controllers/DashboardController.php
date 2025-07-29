@@ -9,11 +9,12 @@ class DashboardController extends Controller
 {
     function index(){
 
-        $user = [];
-        if (Auth::check()) {
-            // Verifica si el el usuario ya está autenticado
-            $user = Auth::user();
+        if (!Auth::check()) {
+            // Verifica si el usuario NO está autenticado
+            return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
+
+        $user = Auth::user();
 
         $datos = [
             'textos' => [

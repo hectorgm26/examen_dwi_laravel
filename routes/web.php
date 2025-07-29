@@ -8,7 +8,7 @@ Route::get('/', function () {
     return view('landing/index');
 })->name('/');
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->name('backoffice.dashboard');
+Route::get('/backoffice', [DashboardController::class, 'index'])->name('backoffice.dashboard');
 
 Route::get('/backoffice/login', [UserController::class, 'showFormLogin'])->name('user.form.show.login');
 Route::post('/backoffice/login', [UserController::class, 'login'])->name('user.form.login');
