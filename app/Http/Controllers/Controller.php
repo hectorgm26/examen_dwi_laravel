@@ -13,6 +13,8 @@ abstract class Controller
         'username.email' => 'El correo electrónico debe ser un email.',
         // Puedes añadir más mensajes específicos si lo necesitas, por ejemplo:
         // 'name.required' => 'El campo Nombre es obligatorio.',
-        // 'password.confirmed' => 'Las contraseñas no coinciden.',
+        'password.required' => 'La contraseña es requerida.',
+        'password.confirmed' => 'Las contraseñas no coinciden.',
+        'pass_actual.required' => 'La contraseña actual es requerida.',
     ];
 }

@@ -127,4 +127,121 @@ class UserController extends Controller
         $request->session()->regenerateToken();
         return redirect()->route('/')->with('success', 'Sesión cerrada exitosamente.');
     }
+
+    public function showPerfil(){
+        if (!Auth::check()) {
+            // Verifica si el el usuario ya está autenticado
+            return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
+        }
+
+        $user = Auth::user();
+
+        $datos = [
+            'textos' => [
+                'titulo' => 'Mantenedor Usuarios | Sonkei FC',
+                'logo' => '/assets/imgs/logo_sonkei_v2.webp',
+                'nombre' => 'Sonkei FC',
+                'formulario' => [
+                    'titulo' => 'Registro Sonkei FC ⚽️',
+                    'instruccion' => 'Ingrese sus datos para registrarse en el sistema'
+                ],
+            ],
+            'dev' => [
+                'nombre' => 'Instituto Profesional San Sebastián',
+                'url' => 'https://www.ipss.cl',
+                'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
+            ],
+            'user' => $user
+        ];
+
+        return view('backoffice/users/profile', $datos);
+
+
+    }
+    
+    public function showContacto(){
+        if (!Auth::check()) {
+            // Verifica si el el usuario ya está autenticado
+            return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
+        }
+
+        $user = Auth::user();
+
+        $datos = [
+            'textos' => [
+                'titulo' => 'Mantenedor Usuarios | Sonkei FC',
+                'logo' => '/assets/imgs/logo_sonkei_v2.webp',
+                'nombre' => 'Sonkei FC',
+                'formulario' => [
+                    'titulo' => 'Registro Sonkei FC ⚽️',
+                    'instruccion' => 'Ingrese sus datos para registrarse en el sistema'
+                ],
+            ],
+            'dev' => [
+                'nombre' => 'Instituto Profesional San Sebastián',
+                'url' => 'https://www.ipss.cl',
+                'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
+            ],
+            'user' => $user
+        ];
+
+        return view('backoffice/users/contact', $datos);
+
+
+    }
+    
+    public function showSeguridad(){
+        if (!Auth::check()) {
+            // Verifica si el el usuario ya está autenticado
+            return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
+        }
+
+        $user = Auth::user();
+
+        $datos = [
+            'textos' => [
+                'titulo' => 'Mantenedor Usuarios | Sonkei FC',
+                'logo' => '/assets/imgs/logo_sonkei_v2.webp',
+                'nombre' => 'Sonkei FC',
+                'formulario' => [
+                    'titulo' => 'Registro Sonkei FC ⚽️',
+                    'instruccion' => 'Ingrese sus datos para registrarse en el sistema'
+                ],
+            ],
+            'dev' => [
+                'nombre' => 'Instituto Profesional San Sebastián',
+                'url' => 'https://www.ipss.cl',
+                'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
+            ],
+            'user' => $user
+        ];
+
+        return view('backoffice/users/security', $datos);
+
+
+    }
+
+    public function cambiarClave(Request $_request){
+        if (!Auth::check()) {
+            // Verifica si el el usuario ya está autenticado
+            return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
+        }
+
+        $user = Auth::user();
+
+        $_request->validate([
+            'pass_actual' => ['required'],
+            'password' => ['required', 'confirmed', Password::defaults()],
+        ], $this->messages);
+
+        if (Hash::check($_request->pass_actual, $user->password)) {
+            $user->password = Hash::make($_request->password);
+            $user->save();
+            return redirect()->route('backoffice.user.security')->with('success', 'Contraseña cambiada exitosamente.');
+        } else {
+            return redirect()->route('backoffice.user.security')->withErrors('Error: Contraseña actual incorrecta.');
+        }
+
+
+    }
 }
