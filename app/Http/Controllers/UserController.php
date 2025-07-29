@@ -46,7 +46,7 @@ class UserController extends Controller
         // 2. Validación de los datos del formulario
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'username' => ['required', 'string', 'lowercase', 'max:255', 'unique:' . User::class],
+            'username' => ['required', 'email', 'min:8', 'max:50', 'unique:' . User::class],
             'password' => ['required', 'confirmed', Password::defaults()],
         ], $this->messages);
 

@@ -121,7 +121,7 @@
               </div>
               <div class="mb-6 form-control-validation">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" id="email" name="username" placeholder="Ingrese su email" />
+                <input type="email" class="form-control" id="email" name="username" placeholder="Ingrese su email" required="required" />
               </div>
               <div class="mb-6 form-password-toggle form-control-validation">
                 <label class="form-label" for="password">Contraseña</label>
