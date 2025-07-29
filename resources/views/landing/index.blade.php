@@ -25,9 +25,10 @@
             <button class="btn btn-primary">Crear Usuario</button>
         </a>
     @endguest
-    {{-- Muestra este botón SI SÍ hay sesión iniciada (está "autenticado") --}}
+    {{-- Muestra este botón SI hay sesión iniciada (está "autenticado") --}}
     @auth
         <p>Hola, {{ Auth::user()->name }}!</p>
+        <p><a href="{{ route('backoffice.dashboard')}}">Dashboard</a></p>
         <form method="POST" action="{{ route('logout') }}">
             @csrf
             <button type="submit" class="btn btn-danger">Cerrar Sesión</button>
