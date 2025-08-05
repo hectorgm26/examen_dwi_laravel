@@ -154,7 +154,10 @@ class UserController extends Controller
             'user' => $user
         ];
 
-        return view('backoffice/users/profile', $datos);
+        return view('backoffice/users/profile', [
+            'datos' => $datos,
+            'user' => $user
+        ]);
 
 
     }

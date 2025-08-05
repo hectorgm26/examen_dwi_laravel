@@ -117,6 +117,7 @@
                   id="name"
                   name="name"
                   placeholder="EJ: Juan"
+                  value="Sebastián"
                   autofocus />
               </div>
               <div class="mb-6 form-control-validation">
@@ -127,11 +128,12 @@
                   id="lastname"
                   name="lastname"
                   placeholder="EJ: Pérez"
+                  value="Cabezas"
                   />
               </div>
               <div class="mb-6 form-control-validation">
                 <label for="rut" class="form-label">Rut</label>
-                <input type="text" class="form-control" id="rut" name="rut" placeholder="Ingrese su RUT" required="required" />
+                <input type="text" class="form-control" id="rut" name="rut" placeholder="Ingrese su RUT" required="required" value="12345678-9" />
               </div>
               <div class="mb-6 form-password-toggle form-control-validation">
                 <label class="form-label" for="password">Contraseña</label>
@@ -142,7 +144,9 @@
                     class="form-control"
                     name="password"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                    aria-describedby="password" />
+                    aria-describedby="password" 
+                    value="holaMundo"
+                    />
                   <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
                 </div>
               </div>
@@ -155,7 +159,9 @@
                     class="form-control"
                     name="password_confirmation"
                     placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;"
-                    aria-describedby="password" />
+                    aria-describedby="password" 
+                    value="holaMundo"
+                    />
                   <span class="input-group-text cursor-pointer"><i class="icon-base ti tabler-eye-off"></i></span>
                 </div>
               </div>

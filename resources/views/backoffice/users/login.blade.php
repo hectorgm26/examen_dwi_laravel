@@ -120,7 +120,7 @@
                   id="username"
                   name="rut"
                   placeholder="Ingrese su usuario"
-                  value="12123123-1"
+                  value="12345678-9"
                   autofocus />
               </div>
               <div class="mb-6 form-password-toggle form-control-validation">

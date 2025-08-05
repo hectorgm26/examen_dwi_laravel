@@ -30,7 +30,10 @@ class DashboardController extends Controller
             'user' => $user
         ];
 
-        return view('backoffice/dashboard/index', $datos);
+        return view('backoffice/dashboard/index', [
+            'datos' => $datos,
+            'user' => $user
+        ]);
     }
 
 }

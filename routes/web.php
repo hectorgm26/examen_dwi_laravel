@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RolesController;
 
 Route::get('/', function () {
     return view('landing/index');
@@ -23,3 +24,5 @@ Route::get('/backoffice/user/security', [UserController::class, 'showSeguridad']
 Route::post('/backoffice/user/security', [UserController::class, 'cambiarClave'])->name('backoffice.user.security.changePass');
 
 Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logout');
+
+Route::get('/backoffice/roles', [RolesController::class, 'index'])->name('backoffice.roles.index');
