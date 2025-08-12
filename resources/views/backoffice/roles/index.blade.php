@@ -2,11 +2,11 @@
 
 @section('content')
     <div class="container-xxl flex-grow-1 container-p-y">
-        <h4 class="mb-1">{{$datos['mantenedor']['titulo']}}</h4>
-
+        <h4 class="mb-1">{{ $datos['mantenedor']['titulo'] }}</h4>
         <p class="mb-6">
-            {{$datos['mantenedor']['instruccion']}}
+            {{ $datos['mantenedor']['instruccion'] }}
         </p>
+        @include('backoffice._partials.messages')
         <!-- Role cards -->
         <div class="row g-6">
             <div class="col-xl-4 col-lg-6 col-md-6">
@@ -44,14 +44,14 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="card h-100">
                     <div class="row h-100">
                         <div class="col-sm-5">
                             <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-4">
-                                <img src="../../assets/img/illustrations/add-new-roles.png" class="img-fluid"
-                                    alt="Image" width="83" />
+                                <img src="../../assets/img/illustrations/add-new-roles.png" class="img-fluid" alt="Image"
+                                    width="83" />
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -70,10 +70,6 @@
                 </div>
             </div>
             <div class="col-12">
-                <h4 class="mt-6 mb-1">Total users with their roles</h4>
-                <p class="mb-0">Find all of your company’s administrator accounts and their associate roles.</p>
-            </div>
-            <div class="col-12">
                 <!-- Role Table -->
                 <div class="card">
                     <div class="card-datatable">
@@ -87,12 +83,41 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @if (isset($lista))
+                                @if (count($lista) == 0)
                                     <tr>
                                         <td colspan="4" class="text-center">Sin Registros</td>
                                     </tr>
                                 @else
-                                    
+                                    @foreach ($lista as $item)
+                                        <tr>
+                                            <td class="text-center">{{ $item->id }}</td>
+                                            <td class="text-center">{{ $item->nombre }}</td>
+                                            <td class="text-center">
+                                                @if ($item->activo == 1)
+                                                    <span class="text-success">Activo</span>
+                                                @else
+                                                    <span class="text-danger">Desactivado</span>
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
+                                                ver
+                                                actualizar
+                                                
+                                                <form action="{{ route('backoffice.roles.up', $item->id)}}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-primary"><i class="icon-base ti tabler-arrow-up"></i></button>
+                                                </form>
+                                                <form action="{{ route('backoffice.roles.down', $item->id)}}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger"><i class="icon-base ti tabler-arrow-down"></i></button>
+                                                </form>
+                                                <form action="{{ route('backoffice.roles.destroy', $item->id)}}" method="POST">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-danger"><i class="icon-base ti tabler-trash"></i></button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endforeach
                                 @endif
                             </tbody>
                         </table>
@@ -104,16 +129,14 @@
         <!--/ Role cards -->
 
         <!-- Add Role Modal -->
-        <!-- Add Role Modal -->
         @component('backoffice._partials.modal', [
-            'titulo' => 'Agregar Nuevo Rol',
-            'instruccion' => 'Agregue todo lo que sale... por favor...',
-            'campos' => $datos['fields']
+            'titulo' => $datos['mantenedor']['titulo'],
+            'instruccion' => $datos['mantenedor']['instruccion'],
+            'accion' => 'new',
+            'ruta' => $datos['mantenedor']['routes']['new'],
+            'campos' => $datos['mantenedor']['fields'],
         ])
-            
         @endcomponent
         <!--/ Add Role Modal -->
-
-        <!-- / Add Role Modal -->
     </div>
 @endsection

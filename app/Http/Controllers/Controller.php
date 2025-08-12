@@ -16,5 +16,7 @@ abstract class Controller
         'password.required' => 'La contraseña es requerida.',
         'password.confirmed' => 'Las contraseñas no coinciden.',
         'pass_actual.required' => 'La contraseña actual es requerida.',
+        'roles_nombre.required' => 'El <strong>Nombre</strong> es requerido.',
+        'roles_icono.required' => 'El <strong>Icono</strong> es requerido.',
     ];
 }

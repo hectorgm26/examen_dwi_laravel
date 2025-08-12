@@ -26,3 +26,8 @@ Route::post('/backoffice/user/security', [UserController::class, 'cambiarClave']
 Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/backoffice/roles', [RolesController::class, 'index'])->name('backoffice.roles.index');
+Route::post('/backoffice/roles', [RolesController::class, 'store'])->name('backoffice.roles.new');
+Route::post('/backoffice/roles/down/{_id}', [RolesController::class, 'down'])->name('backoffice.roles.down');
+Route::post('/backoffice/roles/up/{_id}', [RolesController::class, 'up'])->name('backoffice.roles.up');
+Route::post('/backoffice/roles/destroy/{_id}', [RolesController::class, 'destroy'])->name('backoffice.roles.destroy');
+
