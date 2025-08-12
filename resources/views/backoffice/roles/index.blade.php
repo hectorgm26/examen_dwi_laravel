@@ -73,54 +73,11 @@
                 <!-- Role Table -->
                 <div class="card">
                     <div class="card-datatable">
-                        <table class="datatables-users table border-top">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Estado</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @if (count($lista) == 0)
-                                    <tr>
-                                        <td colspan="4" class="text-center">Sin Registros</td>
-                                    </tr>
-                                @else
-                                    @foreach ($lista as $item)
-                                        <tr>
-                                            <td class="text-center">{{ $item->id }}</td>
-                                            <td class="text-center">{{ $item->nombre }}</td>
-                                            <td class="text-center">
-                                                @if ($item->activo == 1)
-                                                    <span class="text-success">Activo</span>
-                                                @else
-                                                    <span class="text-danger">Desactivado</span>
-                                                @endif
-                                            </td>
-                                            <td class="text-center">
-                                                ver
-                                                actualizar
-                                                
-                                                <form action="{{ route('backoffice.roles.up', $item->id)}}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-primary"><i class="icon-base ti tabler-arrow-up"></i></button>
-                                                </form>
-                                                <form action="{{ route('backoffice.roles.down', $item->id)}}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger"><i class="icon-base ti tabler-arrow-down"></i></button>
-                                                </form>
-                                                <form action="{{ route('backoffice.roles.destroy', $item->id)}}" method="POST">
-                                                    @csrf
-                                                    <button type="submit" class="btn btn-danger"><i class="icon-base ti tabler-trash"></i></button>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                @endif
-                            </tbody>
-                        </table>
+                        @component('backoffice._partials.table', [
+                            'lista' => $lista,
+                            'datos' => $datos,
+                        ])
+                        @endcomponent
                     </div>
                 </div>
                 <!--/ Role Table -->

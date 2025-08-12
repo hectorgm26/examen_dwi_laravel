@@ -120,11 +120,12 @@ class RolesController extends Controller
 
         $buscado = RolesModel::find($_id);
 
-        $buscado->activo = 0;
-
-        $buscado->save();
-
-        return redirect()->back()->with('success', ':) Rol apagado exitosamente.');
+        if ($buscado->activo == 1) {
+            $buscado->activo = 0;
+            $buscado->save();
+            return redirect()->back()->with('success', ':) Rol apagado exitosamente.');
+        }
+        return redirect()->back()->withErrors('No se realizaron Cambios.');
     }
     public function up(Request $request, $_id)
     {
@@ -136,11 +137,12 @@ class RolesController extends Controller
 
         $buscado = RolesModel::find($_id);
 
-        $buscado->activo = 1;
-
-        $buscado->save();
-
-        return redirect()->back()->with('success', ':) Rol encendido exitosamente.');
+        if ($buscado->activo == 0) {
+            $buscado->activo = 1;
+            $buscado->save();
+            return redirect()->back()->with('success', ':) Rol encendido exitosamente.');
+        }
+        return redirect()->back()->withErrors('No se realizaron Cambios.');
     }
     public function destroy(Request $request, $_id)
     {
