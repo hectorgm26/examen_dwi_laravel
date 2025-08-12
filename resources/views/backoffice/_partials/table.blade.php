@@ -28,20 +28,20 @@
                         ver
                         actualizar
                         @if ($item->activo == 1)
-                            <form action="{{ route('backoffice.roles.down', $item->id) }}" method="POST">
+                            <form action="{{ route($datos['mantenedor']['routes']['down'], $item->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger"><i
                                         class="icon-base ti tabler-arrow-down"></i></button>
                             </form>
                         @endif
                         @if ($item->activo == 0)
-                            <form action="{{ route('backoffice.roles.up', $item->id) }}" method="POST">
+                            <form action="{{ route($datos['mantenedor']['routes']['up'], $item->id) }}" method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-primary"><i
                                         class="icon-base ti tabler-arrow-up"></i></button>
                             </form>
                         @endif
-                        {{-- <form action="{{ route('backoffice.roles.destroy', $item->id) }}" method="POST">
+                        {{-- <form action="{{ route($datos['mantenedor']['routes']['destroy'], $item->id) }}" method="POST">
                             @csrf
                             <button type="submit" class="btn btn-danger"><i
                                     class="icon-base ti tabler-trash"></i></button>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CargosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -30,4 +31,10 @@ Route::post('/backoffice/roles', [RolesController::class, 'store'])->name('backo
 Route::post('/backoffice/roles/down/{_id}', [RolesController::class, 'down'])->name('backoffice.roles.down');
 Route::post('/backoffice/roles/up/{_id}', [RolesController::class, 'up'])->name('backoffice.roles.up');
 Route::post('/backoffice/roles/destroy/{_id}', [RolesController::class, 'destroy'])->name('backoffice.roles.destroy');
+
+Route::get('/backoffice/cargos', [CargosController::class, 'index'])->name('backoffice.cargos.index');
+Route::post('/backoffice/cargos', [CargosController::class, 'store'])->name('backoffice.cargos.new');
+Route::post('/backoffice/cargos/down/{_id}', [CargosController::class, 'down'])->name('backoffice.cargos.down');
+Route::post('/backoffice/cargos/up/{_id}', [CargosController::class, 'up'])->name('backoffice.cargos.up');
+Route::post('/backoffice/cargos/destroy/{_id}', [CargosController::class, 'destroy'])->name('backoffice.cargos.destroy');
 
