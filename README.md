@@ -581,9 +581,35 @@ php artisan make:model HorainicioModel
 ```
 php artisan make:view backoffice/horainicio/index
 ```
+## Hora Fin: Gerard Aliaga
+### Controller
+```php
+php artisan make:controller HoraFinController
+```
+### Modelo
+```php
+php artisan make:model HoraFinModel
+```
+### Vista
+```php
+php artisan make:view backoffice/horafin/index
+```
+## Medios de Pago: Miguel Cabello
+### Controlador
+```php
+php artisan make:controller PagosController
+```
+### Modelo
+```php
+php artisan make:model PagosModel
+```
+### Vista
+```php
+php artisan make:view backoffice/pagos/index
+```
 
+```php
 
-```php
 ```
 ```php
 ```
@@ -593,3 +619,5 @@ php artisan make:view backoffice/horainicio/index
 ```
 ```php
 ```
+
+php artisan migrate:fresh

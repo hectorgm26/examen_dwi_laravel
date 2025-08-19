@@ -6,6 +6,7 @@ use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\RecintosController;
 use App\Http\Controllers\RolesController;
@@ -73,3 +74,21 @@ Route::post('/backoffice/horainicio', [HorainicioController::class, 'store'])->n
 Route::post('/backoffice/horainicio/down/{_id}', [HorainicioController::class, 'down'])->name('backoffice.horainicio.down');
 Route::post('/backoffice/horainicio/up/{_id}', [HorainicioController::class, 'up'])->name('backoffice.horainicio.up');
 Route::post('/backoffice/horainicio/destroy/{_id}', [HorainicioController::class, 'destroy'])->name('backoffice.horainicio.destroy');
+
+// Gerard Aliaga
+
+Route::get('/backoffice/horafin', [HoraFinController::class, 'index'])->name('backoffice.horafin.index');
+Route::post('/backoffice/horafin', [HoraFinController::class, 'store'])->name('backoffice.horafin.new');
+Route::post('/backoffice/horafin/down/{_id}', [HoraFinController::class, 'down'])->name('backoffice.horafin.down');
+Route::post('/backoffice/horafin/up/{_id}', [HoraFinController::class, 'up'])->name('backoffice.horafin.up');
+Route::post('/backoffice/horafin/destroy/{_id}', [HoraFinController::class, 'destroy'])->name('backoffice.horafin.destroy');
+
+// Miguel Cabello
+
+Route::get('/backoffice/pagos', [PagosController::class, 'index'])->name('backoffice.pagos.index');
+Route::post('/backoffice/pagos', [PagosController::class, 'store'])->name('backoffice.pagos.new');
+Route::get('/backoffice/pagos/{_id}', [PagosController::class, 'show'])->name('backoffice.pagos.show');
+Route::get('/backoffice/pagos/{_id}/edit', [PagosController::class, 'edit'])->name('backoffice.pagos.edit');
+Route::post('/backoffice/pagos/down/{_id}', [PagosController::class, 'down'])->name('backoffice.pagos.down');
+Route::post('/backoffice/pagos/up/{_id}', [PagosController::class, 'up'])->name('backoffice.pagos.up');
+Route::post('/backoffice/pagos/destroy/{_id}', [PagosController::class, 'destroy'])->name('backoffice.pagos.destroy');
