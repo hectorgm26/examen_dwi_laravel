@@ -633,8 +633,19 @@ php artisan make:model PosicionModel
 ```php
 php artisan make:view backoffice/posicion/index
 ```
-```
+### Campeonato: Cristian Gomez
+### Controller
 ```php
+php artisan make:controller CampeonatoController
+```
+### Modelo
+```php
+php artisan make:model CampeonatoModel
+```
+### Vista
+```php
+php artisan make:view backoffice/campeonato/index
+```
 ```
 ```php
 ```

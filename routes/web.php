@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CamisetasController;
+use App\Http\Controllers\CampeonatoController;
 use App\Http\Controllers\CargosController;
 use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
@@ -109,3 +110,11 @@ Route::post('/backoffice/posicion', [PosicionController::class, 'store'])->name(
 Route::post('/backoffice/posicion/down/{_id}', [PosicionController::class, 'down'])->name('backoffice.posicion.down');
 Route::post('/backoffice/posicion/up/{_id}', [PosicionController::class, 'up'])->name('backoffice.posicion.up');
 Route::post('/backoffice/posicion/destroy/{_id}', [PosicionController::class, 'destroy'])->name('backoffice.posicion.destroy');
+
+// Cristian Gomez
+
+Route::get('/backoffice/campeonato', [CampeonatoController::class, 'index'])->name('backoffice.campeonato.index');
+Route::post('/backoffice/campeonato', [CampeonatoController::class, 'store'])->name('backoffice.campeonato.store');
+Route::get('/backoffice/campeonato/down/{_id}', [CampeonatoController::class, 'down'])->name('backoffice.campeonato.down');
+Route::get('/backoffice/campeonato/up/{_id}', [CampeonatoController::class, 'up'])->name('backoffice.campeonato.up'); 
+Route::post('/backoffice/campeonato/destroy/{_id}', [CampeonatoController::class, 'destroy'])->name('backoffice.campeonato.destroy'); 
