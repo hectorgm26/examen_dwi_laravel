@@ -4,6 +4,7 @@ use App\Http\Controllers\CargosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RecintosController;
 use App\Http\Controllers\RolesController;
 
 Route::get('/', function () {
@@ -38,3 +39,10 @@ Route::post('/backoffice/cargos/down/{_id}', [CargosController::class, 'down'])-
 Route::post('/backoffice/cargos/up/{_id}', [CargosController::class, 'up'])->name('backoffice.cargos.up');
 Route::post('/backoffice/cargos/destroy/{_id}', [CargosController::class, 'destroy'])->name('backoffice.cargos.destroy');
 
+// Javiera Gonzalez
+
+Route::get('/backoffice/recintos', [RecintosController::class, 'index'])->name('backoffice.recintos.index');
+Route::post('/backoffice/recintos', [RecintosController::class, 'store'])->name('backoffice.recintos.new');
+Route::post('/backoffice/recintos/down/{_id}', [RecintosController::class, 'down'])->name('backoffice.recintos.down');
+Route::post('/backoffice/recintos/up/{_id}', [RecintosController::class, 'up'])->name('backoffice.recintos.up');
+Route::post('/backoffice/recintos/destroy/{_id}', [RecintosController::class, 'destroy'])->name('backoffice.recintos.destroy');

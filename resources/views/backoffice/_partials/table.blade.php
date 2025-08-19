@@ -3,6 +3,10 @@
         <tr>
             <th>ID</th>
             <th>Nombre</th>
+            {{-- Directiva para mostrar la columna Ubicación condicionalmente --}}
+            @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
+                <th>Ubicación</th>
+            @endif
             <th>Estado</th>
             <th>Acciones</th>
         </tr>
@@ -17,6 +21,10 @@
                 <tr>
                     <td class="text-center">{{ $item->id }}</td>
                     <td class="text-center">{{ $item->nombre }}</td>
+                    {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
+                    @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
+                        <td class="text-center">{{ $item->ubicacion }}</td>
+                    @endif
                     <td class="text-center">
                         @if ($item->activo == 1)
                             <span class="text-success">Activo</span>
