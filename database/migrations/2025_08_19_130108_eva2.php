@@ -110,6 +110,14 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('genero', function (Blueprint $table) {
+            $table->id();
+            $table->string('icono')->nullable();
+            $table->string('nombre', 50);
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -130,5 +138,6 @@ return new class extends Migration
         Schema::dropIfExists('nacionalidad');
         Schema::dropIfExists('oficios');
         Schema::dropIfExists('categoria');
+        Schema::dropIfExists('genero');
     }
 };

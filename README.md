@@ -702,4 +702,31 @@ php artisan make:model CategoriaModel
 ```php
 php artisan make:view backoffice/categoria/index
 ```
+
+## Genero: Andrea Horna
+### Controller
+```php
+php artisan make:controller GeneroController
+```
+### Modelo
+```php
+php artisan make:model GeneroModel
+```
+### Vista
+```php
+php artisan make:view backoffice/genero/index
+```
+## Pierna Dominante: Vicente Vargas
+### Controller
+```php
+php artisan make:controller PiernaDominanteController
+```
+### Modelo
+```php
+php artisan make:model PiernaDominanteModel
+```
+### Vista
+```php
+php artisan make:view backoffice/piernaDominante/index
+```
 php artisan migrate:fresh

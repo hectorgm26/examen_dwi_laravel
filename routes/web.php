@@ -9,11 +9,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiasSemanaController;
+use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
 use App\Http\Controllers\NacionalidadController;
 use App\Http\Controllers\OficiosController;
+use App\Http\Controllers\PiernaDominanteController;
 use App\Http\Controllers\PosicionController;
 use App\Http\Controllers\PremiosController;
 use App\Http\Controllers\RecintosController;
@@ -152,5 +154,20 @@ Route::post('/backoffice/Categoria', [CategoriaController::class, 'store'])->nam
 Route::post('/backoffice/Categoria/down/{_id}', [CategoriaController::class, 'down'])->name('backoffice.categoria.down');
 Route::post('/backoffice/Categoria/up/{_id}', [CategoriaController::class, 'up'])->name('backoffice.categoria.up');
 Route::post('/backoffice/Categoria/destroy/{_id}', [CategoriaController::class, 'destroy'])->name('backoffice.categoria.destroy');
+
+// Andrea Horna
+Route::get('/backoffice/genero', [GeneroController::class, 'index'])->name('backoffice.genero.index');
+Route::post('/backoffice/genero', [GeneroController::class, 'store'])->name('backoffice.genero.store');
+Route::post('/backoffice/genero/down/{_id}', [GeneroController::class, 'down'])->name('backoffice.genero.down');
+Route::post('/backoffice/genero/up/{_id}', [GeneroController::class, 'up'])->name('backoffice.genero.up');
+Route::post('/backoffice/genero/destroy/{id}', [GeneroController::class, 'destroy'])->name('backoffice.genero.destroy');
+
+// Vicente Vargas
+Route::get('/backoffice/piernadominante', [PiernaDominanteController::class, 'index'])->name('backoffice.piernadominante.index');
+Route::post('/backoffice/piernadominante', [PiernaDominanteController::class, 'store'])->name('backoffice.piernadominante.new');
+Route::post('/backoffice/piernadominante/down/{_id}', [PiernaDominanteController::class, 'down'])->name('backoffice.piernadominante.down');
+Route::post('/backoffice/piernadominante/up/{_id}', [PiernaDominanteController::class, 'up'])->name('backoffice.piernadominante.up');
+Route::post('/backoffice/piernadominante/destroy/{_id}', [PiernaDominanteController::class, 'destroy'])->name('backoffice.piernadominante.destroy');
+
 
 // Malcom Bahamondes
