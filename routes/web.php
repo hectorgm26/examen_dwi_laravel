@@ -6,6 +6,7 @@ use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\RecintosController;
 use App\Http\Controllers\RolesController;
 
@@ -64,3 +65,11 @@ Route::post('/backoffice/comunas', [ComunasController::class, 'store'])->name('b
 Route::post('/backoffice/comunas/down/{_id}', [ComunasController::class, 'down'])->name('backoffice.comunas.down');
 Route::post('/backoffice/comunas/up/{_id}', [ComunasController::class, 'up'])->name('backoffice.comunas.up');
 Route::post('/backoffice/comunas/destroy/{_id}', [ComunasController::class, 'destroy'])->name('backoffice.comunas.destroy');
+
+// Jean Doizi
+
+Route::get('/backoffice/horainicio', [HorainicioController::class, 'index'])->name('backoffice.horainicio.index');
+Route::post('/backoffice/horainicio', [HorainicioController::class, 'store'])->name('backoffice.horainicio.new');
+Route::post('/backoffice/horainicio/down/{_id}', [HorainicioController::class, 'down'])->name('backoffice.horainicio.down');
+Route::post('/backoffice/horainicio/up/{_id}', [HorainicioController::class, 'up'])->name('backoffice.horainicio.up');
+Route::post('/backoffice/horainicio/destroy/{_id}', [HorainicioController::class, 'destroy'])->name('backoffice.horainicio.destroy');

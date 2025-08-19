@@ -33,6 +33,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('hora_inicio', function (Blueprint $table) {
+            $table->id();
+            $table->time('nombre')->unique(); // ← Aquí
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -43,5 +50,6 @@ return new class extends Migration
         Schema::dropIfExists('recintos');
         Schema::dropIfExists('camisetas');
         Schema::dropIfExists('comunas');
+        Schema::dropIfExists('hora_inicio');
     }
 };

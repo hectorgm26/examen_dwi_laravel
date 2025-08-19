@@ -568,9 +568,21 @@ php artisan make:model ComunasModel
 ```php
 php artisan make:view backoffice/comunas/index
 ```
-
-
+### Hora Inicio: Jean Doize
+### Controller
 ```
+php artisan make:controller HorainicioController
+```
+### Modelo
+```
+php artisan make:model HorainicioModel
+```
+### Vista
+```
+php artisan make:view backoffice/horainicio/index
+```
+
+
 ```php
 ```
 ```php
