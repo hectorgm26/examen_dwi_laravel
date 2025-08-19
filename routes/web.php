@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
+use App\Http\Controllers\PosicionController;
 use App\Http\Controllers\PremiosController;
 use App\Http\Controllers\RecintosController;
 use App\Http\Controllers\RolesController;
@@ -102,3 +103,9 @@ Route::post('/backoffice/premios/down/{_id}', [PremiosController::class, 'down']
 Route::post('/backoffice/premios/up/{_id}', [PremiosController::class, 'up'])->name('backoffice.premios.up');
 Route::post('/backoffice/premios/destroy/{_id}', [PremiosController::class, 'destroy'])->name('backoffice.premios.destroy');
 
+// Ethan Mayorines
+Route::get('/backoffice/posicion', [PosicionController::class, 'index'])->name('backoffice.posicion.index');
+Route::post('/backoffice/posicion', [PosicionController::class, 'store'])->name('backoffice.posicion.new');
+Route::post('/backoffice/posicion/down/{_id}', [PosicionController::class, 'down'])->name('backoffice.posicion.down');
+Route::post('/backoffice/posicion/up/{_id}', [PosicionController::class, 'up'])->name('backoffice.posicion.up');
+Route::post('/backoffice/posicion/destroy/{_id}', [PosicionController::class, 'destroy'])->name('backoffice.posicion.destroy');

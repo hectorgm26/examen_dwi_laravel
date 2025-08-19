@@ -2,6 +2,9 @@
     <thead>
         <tr>
             <th>ID</th>
+            @if ($datos['mantenedor']['fields'][0]['label'] == 'Abreviatura')
+                <th>Abreviatura</th>
+            @endif
             <th>Nombre</th>
             {{-- Directiva para mostrar la columna Ubicación condicionalmente --}}
             @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
@@ -20,6 +23,9 @@
             @foreach ($lista as $item)
                 <tr>
                     <td class="text-center">{{ $item->id }}</td>
+                    @if ($item->abreviatura)
+                        <td class="text-center">{{ $item->abreviatura }}</td>
+                    @endif
                     <td class="text-center">{{ $item->nombre }}</td>
                     {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
                     @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
@@ -36,7 +42,8 @@
                         ver
                         actualizar
                         @if ($item->activo == 1)
-                            <form action="{{ route($datos['mantenedor']['routes']['down'], $item->id) }}" method="POST">
+                            <form action="{{ route($datos['mantenedor']['routes']['down'], $item->id) }}"
+                                method="POST">
                                 @csrf
                                 <button type="submit" class="btn btn-danger"><i
                                         class="icon-base ti tabler-arrow-down"></i></button>

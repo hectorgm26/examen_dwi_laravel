@@ -60,6 +60,14 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
+
+        Schema::create('posiciones', function (Blueprint $table) {
+            $table->id();
+            $table->string('abreviatura')->unique();
+            $table->string('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -74,5 +82,6 @@ return new class extends Migration
         Schema::dropIfExists('hora_fin');
         Schema::dropIfExists('medios_pagos');
         Schema::dropIfExists('premios');
+        Schema::dropIfExists('posiciones');
     }
 };

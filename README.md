@@ -620,7 +620,19 @@ php artisan make:model PremiosModel
 ```php
 php artisan make:view backoffice/premios/index
 ```
+## Posiciones: Ethan Mayorines
+### Controller
 ```php
+php artisan make:controller PosicionController
+```
+### Modelo
+```php
+php artisan make:model PosicionModel
+```
+### Vista
+```php
+php artisan make:view backoffice/posicion/index
+```
 ```
 ```php
 ```
