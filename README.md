@@ -729,4 +729,10 @@ php artisan make:model PiernaDominanteModel
 ```php
 php artisan make:view backoffice/piernaDominante/index
 ```
+
+## Contacto: Justin Kooyip
+php artisan make:controller MedioContactoController
+php artisan make:model MedioContactoModel
+php artisan make:view backoffice/mediocontacto/index
+
 php artisan migrate:fresh

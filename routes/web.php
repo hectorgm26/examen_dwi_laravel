@@ -12,6 +12,7 @@ use App\Http\Controllers\DiasSemanaController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
+use App\Http\Controllers\MedioContactoController;
 use App\Http\Controllers\MediosPagosController;
 use App\Http\Controllers\NacionalidadController;
 use App\Http\Controllers\OficiosController;
@@ -169,5 +170,11 @@ Route::post('/backoffice/piernadominante/down/{_id}', [PiernaDominanteController
 Route::post('/backoffice/piernadominante/up/{_id}', [PiernaDominanteController::class, 'up'])->name('backoffice.piernadominante.up');
 Route::post('/backoffice/piernadominante/destroy/{_id}', [PiernaDominanteController::class, 'destroy'])->name('backoffice.piernadominante.destroy');
 
+// Justin Kooyip
+Route::get('/backoffice/mediocontacto', [MedioContactoController::class, 'index'])->name('backoffice.mediocontacto.index');
+Route::post('/backoffice/mediocontacto', [MedioContactoController::class, 'store'])->name('backoffice.mediocontacto.new');
+Route::post('/backoffice/mediocontacto/down/{_id}', [MedioContactoController::class, 'down'])->name('backoffice.mediocontacto.down');
+Route::post('/backoffice/mediocontacto/up/{_id}', [MedioContactoController::class, 'up'])->name('backoffice.mediocontacto.up');
+Route::post('/backoffice/mediocontacto/destroy/{_id}', [MedioContactoController::class, 'destroy'])->name('backoffice.mediocontacto.destroy');
 
 // Malcom Bahamondes

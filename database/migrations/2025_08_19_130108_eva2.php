@@ -125,6 +125,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('medio_contacto', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -147,5 +154,6 @@ return new class extends Migration
         Schema::dropIfExists('categoria');
         Schema::dropIfExists('genero');
         Schema::dropIfExists('pierna_dominante');
+        Schema::dropIfExists('medio_contacto');
     }
 };
