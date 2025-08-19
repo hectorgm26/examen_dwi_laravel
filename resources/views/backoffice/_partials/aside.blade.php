@@ -195,6 +195,12 @@
                 <div>Medios de Pago</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('backoffice.premios.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-settings"></i>
+                <div>Premios</div>
+            </a>
+        </li>
 
         <li class="menu-header small">
             <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>

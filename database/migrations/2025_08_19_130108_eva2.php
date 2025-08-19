@@ -54,6 +54,12 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('premios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
     }
 
     /**
@@ -66,5 +72,7 @@ return new class extends Migration
         Schema::dropIfExists('comunas');
         Schema::dropIfExists('hora_inicio');
         Schema::dropIfExists('hora_fin');
+        Schema::dropIfExists('medios_pagos');
+        Schema::dropIfExists('premios');
     }
 };

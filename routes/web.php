@@ -9,6 +9,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
+use App\Http\Controllers\PremiosController;
 use App\Http\Controllers\RecintosController;
 use App\Http\Controllers\RolesController;
 
@@ -93,3 +94,11 @@ Route::get('/backoffice/pagos/{_id}/edit', [MediosPagosController::class, 'edit'
 Route::post('/backoffice/pagos/down/{_id}', [MediosPagosController::class, 'down'])->name('backoffice.mediospagos.down');
 Route::post('/backoffice/pagos/up/{_id}', [MediosPagosController::class, 'up'])->name('backoffice.mediospagos.up');
 Route::post('/backoffice/pagos/destroy/{_id}', [MediosPagosController::class, 'destroy'])->name('backoffice.mediospagos.destroy');
+
+// Luciano Lopresti
+Route::get('/backoffice/premios', [PremiosController::class, 'index'])->name('backoffice.premios.index');
+Route::post('/backoffice/premios', [PremiosController::class, 'store'])->name('backoffice.premios.new');
+Route::post('/backoffice/premios/down/{_id}', [PremiosController::class, 'down'])->name('backoffice.premios.down');
+Route::post('/backoffice/premios/up/{_id}', [PremiosController::class, 'up'])->name('backoffice.premios.up');
+Route::post('/backoffice/premios/destroy/{_id}', [PremiosController::class, 'destroy'])->name('backoffice.premios.destroy');
+

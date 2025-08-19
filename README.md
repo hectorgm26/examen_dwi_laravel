@@ -607,9 +607,18 @@ php artisan make:model MediosPagosModel
 ```php
 php artisan make:view backoffice/mediosPagos/index
 ```
-
+### Premios: Luciano Lopresti
+### Controller
 ```php
-
+php artisan make:controller PremiosController
+```
+### Modelo
+```php
+php artisan make:model PremiosModel
+```
+### Vista
+```php
+php artisan make:view backoffice/premios/index
 ```
 ```php
 ```
