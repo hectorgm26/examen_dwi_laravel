@@ -8,6 +8,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
+use App\Http\Controllers\MediosPagosController;
 use App\Http\Controllers\RecintosController;
 use App\Http\Controllers\RolesController;
 
@@ -85,10 +86,10 @@ Route::post('/backoffice/horafin/destroy/{_id}', [HoraFinController::class, 'des
 
 // Miguel Cabello
 
-Route::get('/backoffice/pagos', [PagosController::class, 'index'])->name('backoffice.pagos.index');
-Route::post('/backoffice/pagos', [PagosController::class, 'store'])->name('backoffice.pagos.new');
-Route::get('/backoffice/pagos/{_id}', [PagosController::class, 'show'])->name('backoffice.pagos.show');
-Route::get('/backoffice/pagos/{_id}/edit', [PagosController::class, 'edit'])->name('backoffice.pagos.edit');
-Route::post('/backoffice/pagos/down/{_id}', [PagosController::class, 'down'])->name('backoffice.pagos.down');
-Route::post('/backoffice/pagos/up/{_id}', [PagosController::class, 'up'])->name('backoffice.pagos.up');
-Route::post('/backoffice/pagos/destroy/{_id}', [PagosController::class, 'destroy'])->name('backoffice.pagos.destroy');
+Route::get('/backoffice/pagos', [MediosPagosController::class, 'index'])->name('backoffice.mediospagos.index');
+Route::post('/backoffice/pagos', [MediosPagosController::class, 'store'])->name('backoffice.mediospagos.new');
+Route::get('/backoffice/pagos/{_id}', [MediosPagosController::class, 'show'])->name('backoffice.mediospagos.show');
+Route::get('/backoffice/pagos/{_id}/edit', [MediosPagosController::class, 'edit'])->name('backoffice.mediospagos.edit');
+Route::post('/backoffice/pagos/down/{_id}', [MediosPagosController::class, 'down'])->name('backoffice.mediospagos.down');
+Route::post('/backoffice/pagos/up/{_id}', [MediosPagosController::class, 'up'])->name('backoffice.mediospagos.up');
+Route::post('/backoffice/pagos/destroy/{_id}', [MediosPagosController::class, 'destroy'])->name('backoffice.mediospagos.destroy');

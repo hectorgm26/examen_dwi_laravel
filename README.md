@@ -597,15 +597,15 @@ php artisan make:view backoffice/horafin/index
 ## Medios de Pago: Miguel Cabello
 ### Controlador
 ```php
-php artisan make:controller PagosController
+php artisan make:controller MediosPagosController
 ```
 ### Modelo
 ```php
-php artisan make:model PagosModel
+php artisan make:model MediosPagosModel
 ```
 ### Vista
 ```php
-php artisan make:view backoffice/pagos/index
+php artisan make:view backoffice/mediosPagos/index
 ```
 
 ```php

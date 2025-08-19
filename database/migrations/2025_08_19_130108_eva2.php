@@ -47,6 +47,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('medios_pagos', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre', 255)->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
