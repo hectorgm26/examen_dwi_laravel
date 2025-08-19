@@ -689,5 +689,17 @@ php artisan make:model OficiosModel
 ```php
 php artisan make:view backoffice/oficios/index
 ```
-
+## Categorias: Robert Leyton
+### Controller
+```php
+php artisan make:controller CategoriaController
+```
+### Modelo
+```php
+php artisan make:model CategoriaModel
+```
+### Vista
+```php
+php artisan make:view backoffice/categoria/index
+```
 php artisan migrate:fresh

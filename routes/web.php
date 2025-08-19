@@ -3,6 +3,7 @@
 use App\Http\Controllers\CamisetasController;
 use App\Http\Controllers\CampeonatoController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -119,8 +120,8 @@ Route::post('/backoffice/posicion/destroy/{_id}', [PosicionController::class, 'd
 Route::get('/backoffice/campeonato', [CampeonatoController::class, 'index'])->name('backoffice.campeonato.index');
 Route::post('/backoffice/campeonato', [CampeonatoController::class, 'store'])->name('backoffice.campeonato.store');
 Route::get('/backoffice/campeonato/down/{_id}', [CampeonatoController::class, 'down'])->name('backoffice.campeonato.down');
-Route::get('/backoffice/campeonato/up/{_id}', [CampeonatoController::class, 'up'])->name('backoffice.campeonato.up'); 
-Route::post('/backoffice/campeonato/destroy/{_id}', [CampeonatoController::class, 'destroy'])->name('backoffice.campeonato.destroy'); 
+Route::get('/backoffice/campeonato/up/{_id}', [CampeonatoController::class, 'up'])->name('backoffice.campeonato.up');
+Route::post('/backoffice/campeonato/destroy/{_id}', [CampeonatoController::class, 'destroy'])->name('backoffice.campeonato.destroy');
 
 // Indira Anignir
 Route::get('/backoffice/dias-semana', [DiasSemanaController::class, 'index'])->name('backoffice.diassemana.index');
@@ -144,3 +145,12 @@ Route::post('/backoffice/oficios', [OficiosController::class, 'store'])->name('b
 Route::post('/backoffice/oficios/down/{_id}', [OficiosController::class, 'down'])->name('backoffice.oficios.down');
 Route::post('/backoffice/oficios/up/{_id}', [OficiosController::class, 'up'])->name('backoffice.oficios.up');
 Route::post('/backoffice/oficios/destroy/{_id}', [OficiosController::class, 'destroy'])->name('backoffice.oficios.destroy');
+
+// Robert Leyton
+Route::get('/backoffice/Categoria', [CategoriaController::class, 'index'])->name('backoffice.categoria.index');
+Route::post('/backoffice/Categoria', [CategoriaController::class, 'store'])->name('backoffice.categoria.new');
+Route::post('/backoffice/Categoria/down/{_id}', [CategoriaController::class, 'down'])->name('backoffice.categoria.down');
+Route::post('/backoffice/Categoria/up/{_id}', [CategoriaController::class, 'up'])->name('backoffice.categoria.up');
+Route::post('/backoffice/Categoria/destroy/{_id}', [CategoriaController::class, 'destroy'])->name('backoffice.categoria.destroy');
+
+// Malcom Bahamondes

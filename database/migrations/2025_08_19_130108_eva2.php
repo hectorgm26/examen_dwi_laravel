@@ -103,6 +103,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('categoria', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -122,5 +129,6 @@ return new class extends Migration
         Schema::dropIfExists('dias_semana');
         Schema::dropIfExists('nacionalidad');
         Schema::dropIfExists('oficios');
+        Schema::dropIfExists('categoria');
     }
 };
