@@ -554,5 +554,30 @@ php artisan make:model CamisetasModel
 ```php
 php artisan make:view backoffice/camisetas/index
 ```
+
+## Comunas: Santos Cruz
+### Controller
+```php
+php artisan make:controller ComunasController
+```
+### Modelo
+```php
+php artisan make:model ComunasModel
+```
+### Vista
+```php
+php artisan make:view backoffice/comunas/index
+```
+
+
+```
+```php
+```
+```php
+```
+```php
+```
+```php
+```
 ```php
 ```

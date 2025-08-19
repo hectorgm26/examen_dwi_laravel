@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CamisetasController;
 use App\Http\Controllers\CargosController;
+use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
@@ -55,3 +56,11 @@ Route::post('/backoffice/camisetas', [CamisetasController::class, 'store'])->nam
 Route::post('/backoffice/camisetas/down/{_id}', [CamisetasController::class, 'down'])->name('backoffice.camisetas.down');
 Route::post('/backoffice/camisetas/up/{_id}', [CamisetasController::class, 'up'])->name('backoffice.camisetas.up');
 Route::post('/backoffice/camisetas/destroy/{_id}', [CamisetasController::class, 'destroy'])->name('backoffice.camisetas.destroy');
+
+// Santos Cruz
+
+Route::get('/backoffice/comunas', [ComunasController::class, 'index'])->name('backoffice.comunas.index');
+Route::post('/backoffice/comunas', [ComunasController::class, 'store'])->name('backoffice.comunas.new');
+Route::post('/backoffice/comunas/down/{_id}', [ComunasController::class, 'down'])->name('backoffice.comunas.down');
+Route::post('/backoffice/comunas/up/{_id}', [ComunasController::class, 'up'])->name('backoffice.comunas.up');
+Route::post('/backoffice/comunas/destroy/{_id}', [ComunasController::class, 'destroy'])->name('backoffice.comunas.destroy');

@@ -26,6 +26,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('comunas', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -35,5 +42,6 @@ return new class extends Migration
     {
         Schema::dropIfExists('recintos');
         Schema::dropIfExists('camisetas');
+        Schema::dropIfExists('comunas');
     }
 };
