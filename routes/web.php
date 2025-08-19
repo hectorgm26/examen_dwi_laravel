@@ -7,6 +7,7 @@ use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DiasSemanaController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
@@ -118,3 +119,10 @@ Route::post('/backoffice/campeonato', [CampeonatoController::class, 'store'])->n
 Route::get('/backoffice/campeonato/down/{_id}', [CampeonatoController::class, 'down'])->name('backoffice.campeonato.down');
 Route::get('/backoffice/campeonato/up/{_id}', [CampeonatoController::class, 'up'])->name('backoffice.campeonato.up'); 
 Route::post('/backoffice/campeonato/destroy/{_id}', [CampeonatoController::class, 'destroy'])->name('backoffice.campeonato.destroy'); 
+
+// Indira Anignir
+Route::get('/backoffice/dias-semana', [DiasSemanaController::class, 'index'])->name('backoffice.diassemana.index');
+Route::post('/backoffice/dias-semana', [DiasSemanaController::class, 'store'])->name('backoffice.diassemana.new');
+Route::post('/backoffice/dias-semana/down/{_id}', [DiasSemanaController::class, 'down'])->name('backoffice.diassemana.down');
+Route::post('/backoffice/dias-semana/up/{_id}', [DiasSemanaController::class, 'up'])->name('backoffice.diassemana.up');
+Route::post('/backoffice/dias-semana/destroy/{_id}', [DiasSemanaController::class, 'destroy'])->name('backoffice.diassemana.destroy');

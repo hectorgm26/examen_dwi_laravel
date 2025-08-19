@@ -213,6 +213,12 @@
                 <div>Campeonatos</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('backoffice.diassemana.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-calendar"></i>
+                <div>Días de la Semana</div>
+            </a>
+        </li>
 
         <li class="menu-header small">
             <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>

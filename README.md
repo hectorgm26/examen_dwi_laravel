@@ -646,10 +646,20 @@ php artisan make:model CampeonatoModel
 ```php
 php artisan make:view backoffice/campeonato/index
 ```
-```
+
+## Dias de la Semana: Indira Anignir
+
+### Controller
 ```php
+php artisan make:controller DiasSemanaController
 ```
+### Modelo
 ```php
+php artisan make:model DiasSemanaModel
+```
+### Vista
+```php
+php artisan make:view backoffice/diassemana/index
 ```
 
 php artisan migrate:fresh

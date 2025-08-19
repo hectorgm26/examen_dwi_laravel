@@ -80,6 +80,13 @@ return new class extends Migration
             $table->boolean('activo')->default(true); 
             $table->timestamps(); 
         });
+
+        Schema::create('dias_semana', function (Blueprint $table) {
+            $table->id();
+            $table->String('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
     }
 
     /**
