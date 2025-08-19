@@ -11,6 +11,7 @@ use App\Http\Controllers\DiasSemanaController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
+use App\Http\Controllers\NacionalidadController;
 use App\Http\Controllers\PosicionController;
 use App\Http\Controllers\PremiosController;
 use App\Http\Controllers\RecintosController;
@@ -126,3 +127,11 @@ Route::post('/backoffice/dias-semana', [DiasSemanaController::class, 'store'])->
 Route::post('/backoffice/dias-semana/down/{_id}', [DiasSemanaController::class, 'down'])->name('backoffice.diassemana.down');
 Route::post('/backoffice/dias-semana/up/{_id}', [DiasSemanaController::class, 'up'])->name('backoffice.diassemana.up');
 Route::post('/backoffice/dias-semana/destroy/{_id}', [DiasSemanaController::class, 'destroy'])->name('backoffice.diassemana.destroy');
+
+// Manuel Mena
+
+Route::get('/backoffice/nacionalidad', [NacionalidadController::class, 'index'])->name('backoffice.nacionalidad.index');
+Route::post('/backoffice/nacionalidad', [NacionalidadController::class, 'store'])->name('backoffice.nacionalidad.new');
+Route::post('/backoffice/nacionalidad/down/{_id}', [NacionalidadController::class, 'down'])->name('backoffice.nacionalidad.down');
+Route::post('/backoffice/nacionalidad/up/{_id}', [NacionalidadController::class, 'up'])->name('backoffice.nacionalidad.up');
+Route::post('/backoffice/nacionalidad/destroy/{_id}', [NacionalidadController::class, 'destroy'])->name('backoffice.nacionalidad.destroy');

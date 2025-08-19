@@ -87,6 +87,15 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
+
+        Schema::create('nacionalidad', function (Blueprint $table) {
+            $table->id();
+            $table->string('nacionalidad_nombre')->unique();
+            $table->string('pais_origen')->notNullable();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -103,5 +112,7 @@ return new class extends Migration
         Schema::dropIfExists('premios');
         Schema::dropIfExists('posiciones');
         Schema::dropIfExists('campeonato');
+        Schema::dropIfExists('dias_semana');
+        Schema::dropIfExists('nacionalidad');
     }
 };

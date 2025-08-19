@@ -662,4 +662,19 @@ php artisan make:model DiasSemanaModel
 php artisan make:view backoffice/diassemana/index
 ```
 
+## Nacionalidad: Manuel Mena
+
+### Controller
+```php
+php artisan make:controller NacionalidadController
+```
+### Modelo
+```php
+php artisan make:model NacionalidadModel
+```
+### Vista
+```php
+php artisan make:view backoffice/nacionalidad/index
+```
+
 php artisan migrate:fresh
