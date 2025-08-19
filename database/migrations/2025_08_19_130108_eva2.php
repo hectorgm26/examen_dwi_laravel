@@ -96,6 +96,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('oficios', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -114,5 +121,6 @@ return new class extends Migration
         Schema::dropIfExists('campeonato');
         Schema::dropIfExists('dias_semana');
         Schema::dropIfExists('nacionalidad');
+        Schema::dropIfExists('oficios');
     }
 };

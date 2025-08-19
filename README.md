@@ -676,5 +676,18 @@ php artisan make:model NacionalidadModel
 ```php
 php artisan make:view backoffice/nacionalidad/index
 ```
+## Oficios: Hector Gonzalez
+### Controller
+```php
+php artisan make:controller OficiosController
+```
+### Modelo
+```php
+php artisan make:model OficiosModel
+```
+### Vista
+```php
+php artisan make:view backoffice/oficios/index
+```
 
 php artisan migrate:fresh

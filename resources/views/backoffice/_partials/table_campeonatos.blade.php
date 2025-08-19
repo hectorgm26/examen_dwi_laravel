@@ -38,12 +38,22 @@
                 <td class="text-center">
                     ver
                     actualizar                     
-                    @if ($campeonato->activo == 1 && isset($datos['mantenedor']['routes']['down']))
-                        <a href="{{ route($datos['mantenedor']['routes']['down'], $campeonato->id) }}" class="btn btn-danger"><i class="icon-base ti tabler-arrow-down"></i></a>
-                    @endif
-                    @if ($campeonato->activo == 0 && isset($datos['mantenedor']['routes']['up']))
-                        <a href="{{ route($datos['mantenedor']['routes']['up'], $campeonato->id) }}" class="btn btn-primary"><i class="icon-base ti tabler-arrow-up"></i></a>
-                    @endif
+                    @if ($item->activo == 1)
+                            <form action="{{ route($datos['mantenedor']['routes']['down'], $item->id) }}" method="POST" class="d-inline-block">
+                                @csrf
+                                <button type="submit" class="btn btn-danger" onclick="this.disabled=true; this.innerHTML='<i class=\'icon-base ti tabler-loader\'></i> Procesando...'; setTimeout(() => this.form.submit(), 500);">
+                                    <i class="icon-base ti tabler-arrow-down"></i>
+                                </button>
+                            </form>
+                        @endif
+                        @if ($item->activo == 0)
+                            <form action="{{ route($datos['mantenedor']['routes']['up'], $item->id) }}" method="POST" class="d-inline-block">
+                                @csrf
+                                <button type="submit" class="btn btn-primary" onclick="this.disabled=true; this.innerHTML='<i class=\'icon-base ti tabler-loader\'></i> Procesando...'; setTimeout(() => this.form.submit(), 500);">
+                                    <i class="icon-base ti tabler-arrow-up"></i>
+                                </button>
+                            </form>
+                        @endif
                     @if (isset($datos['mantenedor']['routes']['destroy']))
                     {{-- <form action="{{ route($datos['mantenedor']['routes']['destroy'], $campeonato->id) }}" method="POST">
                             @csrf

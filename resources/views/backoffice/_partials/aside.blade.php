@@ -225,6 +225,12 @@
                 <div>nacionalidad</div>
             </a>
         </li>
+        <li class="menu-item">
+            <a href="{{ route('backoffice.oficios.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-settings"></i>
+                <div>Oficios</div>
+            </a>
+        </li>
 
         <li class="menu-header small">
             <span class="menu-header-text" data-i18n="Apps & Pages">Apps &amp; Pages</span>

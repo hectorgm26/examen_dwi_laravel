@@ -12,6 +12,7 @@ use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
 use App\Http\Controllers\NacionalidadController;
+use App\Http\Controllers\OficiosController;
 use App\Http\Controllers\PosicionController;
 use App\Http\Controllers\PremiosController;
 use App\Http\Controllers\RecintosController;
@@ -135,3 +136,11 @@ Route::post('/backoffice/nacionalidad', [NacionalidadController::class, 'store']
 Route::post('/backoffice/nacionalidad/down/{_id}', [NacionalidadController::class, 'down'])->name('backoffice.nacionalidad.down');
 Route::post('/backoffice/nacionalidad/up/{_id}', [NacionalidadController::class, 'up'])->name('backoffice.nacionalidad.up');
 Route::post('/backoffice/nacionalidad/destroy/{_id}', [NacionalidadController::class, 'destroy'])->name('backoffice.nacionalidad.destroy');
+
+// Hector Gonzalez
+
+Route::get('/backoffice/oficios', [OficiosController::class, 'index'])->name('backoffice.oficios.index');
+Route::post('/backoffice/oficios', [OficiosController::class, 'store'])->name('backoffice.oficios.new');
+Route::post('/backoffice/oficios/down/{_id}', [OficiosController::class, 'down'])->name('backoffice.oficios.down');
+Route::post('/backoffice/oficios/up/{_id}', [OficiosController::class, 'up'])->name('backoffice.oficios.up');
+Route::post('/backoffice/oficios/destroy/{_id}', [OficiosController::class, 'destroy'])->name('backoffice.oficios.destroy');
