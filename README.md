@@ -529,30 +529,30 @@ git pull
 
 ## Recintos: Javiera González
 
-### Rutas
-
-```php
-Route::get('/backoffice/recintos', [RecintosController::class, 'index'])->name('backoffice.recintos.index');
-Route::post('/backoffice/recintos', [RecintosController::class, 'store'])->name('backoffice.recintos.new');
-Route::post('/backoffice/recintos/down/{_id}', [RecintosController::class, 'down'])->name('backoffice.recintos.down');
-Route::post('/backoffice/recintos/up/{_id}', [RecintosController::class, 'up'])->name('backoffice.recintos.up');
-Route::post('/backoffice/recintos/destroy/{_id}', [RecintosController::class, 'destroy'])->name('backoffice.recintos.destroy');
-```
-Controlador
+### Controlador
 ```php
 php artisan make:controller RecintosController
 ```
-Model
+### Model
 ```php
 php artisan make:model RecintosModel
 ```
-Vista
+### Vista
 ```php
 php artisan make:view backoffice/recintos/index
 ```
+
+## Camisetas (Dorsales): Paula León
 ```php
+php artisan make:controller CamisetasController
 ```
+### Modelo
 ```php
+php artisan make:model CamisetasModel
+```
+### Vista
+```php
+php artisan make:view backoffice/camisetas/index
 ```
 ```php
 ```

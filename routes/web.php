@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CamisetasController;
 use App\Http\Controllers\CargosController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
@@ -46,3 +47,11 @@ Route::post('/backoffice/recintos', [RecintosController::class, 'store'])->name(
 Route::post('/backoffice/recintos/down/{_id}', [RecintosController::class, 'down'])->name('backoffice.recintos.down');
 Route::post('/backoffice/recintos/up/{_id}', [RecintosController::class, 'up'])->name('backoffice.recintos.up');
 Route::post('/backoffice/recintos/destroy/{_id}', [RecintosController::class, 'destroy'])->name('backoffice.recintos.destroy');
+
+// Paula Leon
+
+Route::get('/backoffice/camisetas', [CamisetasController::class, 'index'])->name('backoffice.camisetas.index');
+Route::post('/backoffice/camisetas', [CamisetasController::class, 'store'])->name('backoffice.camisetas.new');
+Route::post('/backoffice/camisetas/down/{_id}', [CamisetasController::class, 'down'])->name('backoffice.camisetas.down');
+Route::post('/backoffice/camisetas/up/{_id}', [CamisetasController::class, 'up'])->name('backoffice.camisetas.up');
+Route::post('/backoffice/camisetas/destroy/{_id}', [CamisetasController::class, 'destroy'])->name('backoffice.camisetas.destroy');

@@ -19,6 +19,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('camisetas', function (Blueprint $table) {
+            $table->id();
+            $table->integer('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -27,5 +34,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('recintos');
+        Schema::dropIfExists('camisetas');
     }
 };
