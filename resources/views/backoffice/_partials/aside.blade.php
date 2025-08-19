@@ -135,6 +135,12 @@
                         <div>Generos</div>
                     </a>
                 </li>
+                <li class="menu-item @if (Route::currentRouteName() == 'backoffice.piernadominante.index') active @endif">
+                    <a href="{{ route('backoffice.piernadominante.index') }}" class="menu-link">
+                        <i class="menu-icon icon-base ti tabler-settings"></i>
+                        <div>Pierna Dominante</div>
+                    </a>
+                </li>
             </ul>
         </li>
         {{-- ojo, aca también debe tener el active y open --}}

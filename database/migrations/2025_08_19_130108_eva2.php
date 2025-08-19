@@ -118,6 +118,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('pierna_dominante', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -139,5 +146,6 @@ return new class extends Migration
         Schema::dropIfExists('oficios');
         Schema::dropIfExists('categoria');
         Schema::dropIfExists('genero');
+        Schema::dropIfExists('pierna_dominante');
     }
 };
