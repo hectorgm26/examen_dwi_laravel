@@ -41,6 +41,13 @@ Route::get('/backoffice/user/contact', [UserController::class, 'showContacto'])-
 Route::get('/backoffice/user/security', [UserController::class, 'showSeguridad'])->name('backoffice.user.security');
 Route::post('/backoffice/user/security', [UserController::class, 'cambiarClave'])->name('backoffice.user.security.changePass');
 
+Route::get('/backoffice/users', [UserController::class, 'index'])->name('backoffice.users.index');
+Route::post('/backoffice/users', [UserController::class, 'store'])->name('backoffice.users.new');
+Route::post('/backoffice/users/down/{_id}', [UserController::class, 'down'])->name('backoffice.users.down');
+Route::post('/backoffice/users/up/{_id}', [UserController::class, 'up'])->name('backoffice.users.up');
+Route::post('/backoffice/users/destroy/{_id}', [UserController::class, 'destroy'])->name('backoffice.users.destroy');
+
+
 Route::post('/backoffice/logout', [UserController::class, 'logout'])->name('logout');
 
 Route::get('/backoffice/roles', [RolesController::class, 'index'])->name('backoffice.roles.index');

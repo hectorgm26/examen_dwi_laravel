@@ -12,8 +12,8 @@ class NacionalidadModel extends Model
     protected $table = 'nacionalidad';
 
     protected $fillable = [
+        'nombre',
         'pais_origen',
-        'nacionalidad_nombre',
         'activo'
     ];
 }

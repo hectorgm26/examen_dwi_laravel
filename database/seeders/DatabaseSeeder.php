@@ -23,10 +23,13 @@ class DatabaseSeeder extends Seeder
         //]);
         DB::table('users')->insert([
             [
+                'rut' => '12345678-9',
                 'name' => 'Sebastián',
                 'lastname' => 'Cabezas',
-                'rut' => '12345678-9',
                 'password' => Hash::make('holaMundo'),
+                'fechaNacimiento' => '1987-06-08',
+                'generoId' => 2,
+                'cargoId' => 1,
                 'activo' => true,
                 'created_at' => now(),
                 'updated_at' => now()
@@ -934,35 +937,35 @@ class DatabaseSeeder extends Seeder
         //Nacionalidades: Manuel
         DB::table('nacionalidad')->insert([
             [
-                'nacionalidad_nombre' => 'Chilena',
+                'nombre' => 'Chilena',
                 'pais_origen' => 'Chile',
                 'activo' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nacionalidad_nombre' => 'Venezolana',
+                'nombre' => 'Venezolana',
                 'pais_origen' => 'Venezuela',
                 'activo' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nacionalidad_nombre' => 'Colombiana',
+                'nombre' => 'Colombiana',
                 'pais_origen' => 'Colombia',
                 'activo' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nacionalidad_nombre' => 'Peruana',
+                'nombre' => 'Peruana',
                 'pais_origen' => 'Perú',
                 'activo' => true,
                 'created_at' => now(),
                 'updated_at' => now()
             ],
             [
-                'nacionalidad_nombre' => 'Haitiano',
+                'nombre' => 'Haitiano',
                 'pais_origen' => 'Haití',
                 'activo' => true,
                 'created_at' => now(),

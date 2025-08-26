@@ -13,20 +13,25 @@
                     @foreach ($campos as $campo)
                         @switch($campo['control']['element'])
                             @case('input')
-                            <label class="form-label">{{$campo['label']}}</label>
-                            <input 
-                                type="{{$campo['control']['type']}}" 
-                                name="{{$campo['name']}}"
-                                class="@foreach ($campo['control']['classList'] as $class){{$class}} @endforeach" 
-                                minlength="{{$campo['control']['min']}}" 
-                                maxlength="{{$campo['control']['max']}}" 
-                                placeholder="{{$campo['control']['placeholder']}}">
-                                @break
-                            @case(2)
-                                
-                                @break
+                                <label class="form-label">{{ $campo['label'] }}</label>
+                                <input type="{{ $campo['control']['type'] }}" name="{{ $campo['name'] }}"
+                                    class="@foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
+                                    minlength="{{ $campo['control']['min'] }}" maxlength="{{ $campo['control']['max'] }}"
+                                    placeholder="{{ $campo['control']['placeholder'] }}">
+                            @break
+
+                            @case('select')
+                                <label class="form-label">{{ $campo['label'] }}</label>
+                                <select name="{{ $campo['name'] }}@if ($campo['control']['type'] == 'multiple')[]@endif"
+                                    class="@foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
+                                    @if ($campo['control']['type'] == 'multiple') multiple @endif>
+                                    @foreach ($campo['control']['options'] as $opciones)
+                                        <option value="{{ $opciones['id'] }}">{{ $opciones['nombre'] }}</option>
+                                    @endforeach
+                                </select>
+                            @break
+
                             @default
-                                
                         @endswitch
                     @endforeach
                     <hr>

@@ -77,7 +77,7 @@ class NacionalidadController extends Controller
                     ],
                     [
                         'label' => 'Nacionalidad',
-                        'name' => 'nacionalidad_nombre',
+                        'name' => 'nombre',
                         'required' => true,
                         'control' => [
                             'element' => 'input',
@@ -135,12 +135,12 @@ class NacionalidadController extends Controller
 
         $request->validate([
             'pais_origen' => ['required', 'string', 'max:50', 'min:3'], 
-            'nacionalidad_nombre' => ['required', 'string', 'max:50', 'min:3'],
+            'nombre' => ['required', 'string', 'max:50', 'min:3'],
         ], $this->messages);
 
         $nuevo = NacionalidadModel::create([
             'pais_origen' => $request->pais_origen, 
-            'nacionalidad_nombre' => $request->nacionalidad_nombre,
+            'nombre' => $request->nombre,
         ]);
 
         return redirect()->back()->with('success', ':) nacionalidad creado exitosamente.');

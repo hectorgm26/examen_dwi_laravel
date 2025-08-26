@@ -90,7 +90,7 @@ return new class extends Migration
 
         Schema::create('nacionalidad', function (Blueprint $table) {
             $table->id();
-            $table->string('nacionalidad_nombre')->unique();
+            $table->string('nombre')->unique();
             $table->string('pais_origen')->notNullable();
             $table->boolean('activo')->default(true);
             $table->timestamps();

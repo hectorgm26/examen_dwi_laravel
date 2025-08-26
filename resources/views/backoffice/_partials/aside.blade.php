@@ -172,5 +172,11 @@
                 <div>Aside</div>
             </a>
         </li>
+        <li class="menu-item @if (Route::currentRouteName() == 'backoffice.users.index') active @endif">
+            <a href="{{ route('backoffice.users.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-users"></i>
+                <div>Usuarios</div>
+            </a>
+        </li>
     </ul>
 </aside>
