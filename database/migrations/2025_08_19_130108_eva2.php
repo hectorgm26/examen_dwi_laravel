@@ -70,15 +70,15 @@ return new class extends Migration
         });
 
         Schema::create('campeonato', function (Blueprint $table) {
-            $table->id(); 
-            $table->string('nombre'); 
-            $table->string('descripcion'); 
-            $table->date('fecha_inicio')->nullable(); 
-            $table->date('fecha_fin')->nullable(); 
+            $table->id();
+            $table->string('nombre');
+            $table->string('descripcion');
+            $table->date('fecha_inicio')->nullable();
+            $table->date('fecha_fin')->nullable();
             $table->string('ubicacion')->nullable();
-            $table->string('comuna')->nullable(); 
-            $table->boolean('activo')->default(true); 
-            $table->timestamps(); 
+            $table->string('comuna')->nullable();
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
         });
 
         Schema::create('dias_semana', function (Blueprint $table) {
@@ -140,7 +140,6 @@ return new class extends Migration
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
-
     }
 
     /**

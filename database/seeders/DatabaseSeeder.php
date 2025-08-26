@@ -576,6 +576,142 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+            [
+                'nombre' => 'cargos',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.cargos.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'recintos',
+                'icono' => 'ti-icon-map-pin',
+                'ruta' => 'backoffice.recintos.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'camisetas',
+                'icono' => 'ti-icon-shirt',
+                'ruta' => 'backoffice.camisetas.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'comunas',
+                'icono' => 'ti-icon-building',
+                'ruta' => 'backoffice.comunas.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'horainicio',
+                'icono' => 'ti-icon-clock-hour-3',
+                'ruta' => 'backoffice.horainicio.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'horafin',
+                'icono' => 'ti-icon-clock-hour-3',
+                'ruta' => 'backoffice.horafin.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'mediospagoa',
+                'icono' => 'ti-icon-credit-card-pay',
+                'ruta' => 'backoffice.mediospagos.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'premios',
+                'icono' => 'ti-icon-trophy',
+                'ruta' => 'backoffice.premios.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'posicion',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.posicion.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'diassemana',
+                'icono' => '$ti-icon-calendar;',
+                'ruta' => 'backoffice.diassemana.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'campeonato',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.campeonato.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'nacionalidad',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.nacionalidad.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'oficios',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.oficios.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'categoria',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.categoria.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'genero',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.genero.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'piernadominante',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.piernadominante.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'mediocontacto',
+                'icono' => 'ti tabler-settings',
+                'ruta' => 'backoffice.mediocontacto.index',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
         ]);
         //Recintos: Javiera
         DB::table('recintos')->insert([
@@ -761,6 +897,78 @@ class DatabaseSeeder extends Seeder
                 'created_at' => now(),
                 'updated_at' => now()
             ],
+        ]);
+        //Dias de la semana: Indira
+        DB::table('dias_semana')->insert([
+            [
+                'nombre' => 'Lunes',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Martes',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Miercoles',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Jueves',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Viernes',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
+        //Nacionalidades: Manuel
+        DB::table('nacionalidad')->insert([
+            [
+                'nacionalidad_nombre' => 'Chilena',
+                'pais_origen' => 'Chile',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nacionalidad_nombre' => 'Venezolana',
+                'pais_origen' => 'Venezuela',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nacionalidad_nombre' => 'Colombiana',
+                'pais_origen' => 'Colombia',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nacionalidad_nombre' => 'Peruana',
+                'pais_origen' => 'Perú',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nacionalidad_nombre' => 'Haitiano',
+                'pais_origen' => 'Haití',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            
         ]);
     }
 }
