@@ -130,8 +130,8 @@ Route::post('/backoffice/posicion/destroy/{_id}', [PosicionController::class, 'd
 
 Route::get('/backoffice/campeonato', [CampeonatoController::class, 'index'])->name('backoffice.campeonato.index');
 Route::post('/backoffice/campeonato', [CampeonatoController::class, 'store'])->name('backoffice.campeonato.store');
-Route::get('/backoffice/campeonato/down/{_id}', [CampeonatoController::class, 'down'])->name('backoffice.campeonato.down');
-Route::get('/backoffice/campeonato/up/{_id}', [CampeonatoController::class, 'up'])->name('backoffice.campeonato.up');
+Route::post('/backoffice/campeonato/down/{_id}', [CampeonatoController::class, 'down'])->name('backoffice.campeonato.down');
+Route::post('/backoffice/campeonato/up/{_id}', [CampeonatoController::class, 'up'])->name('backoffice.campeonato.up');
 Route::post('/backoffice/campeonato/destroy/{_id}', [CampeonatoController::class, 'destroy'])->name('backoffice.campeonato.destroy');
 
 // Indira Anignir
