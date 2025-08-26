@@ -577,5 +577,190 @@ class DatabaseSeeder extends Seeder
                 'updated_at' => now()
             ],
         ]);
+        //Recintos: Javiera
+        DB::table('recintos')->insert([
+            [
+                'nombre' => 'Bongo Club',
+                'activo' => true,
+                'ubicacion' => 'América #670',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Cancha 13',
+                'activo' => true,
+                'ubicacion' => 'La Florida, cerca de Av. La Florida',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'F5 Santiago',
+                'activo' => true,
+                'ubicacion' => 'Huechuraba, Ciudad Empresarial',
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
+        //Dorsales: Camisetas: Paula
+        DB::table('camisetas')->insert([
+            [
+                'nombre' => '1',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '2',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '3',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '4',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '5',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '6',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '7',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '8',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '9',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '10',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '11',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '12',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '13',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '14',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '15',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '16',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '17',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '18',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '19',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => '20',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]
+        ]);
+
+        //Campeonato: Cristian
+
+        DB::table('campeonato')->insert([
+            [
+                'nombre' => 'Champions',
+                'descripcion' => 'Suerte en este campeonato competitivo',
+                'fecha_inicio' => '30-08-2025',
+                'fecha_fin' => '06-09-2025',
+                'ubicacion' => 'Calle 123',
+                'comuna' => 'San miguel',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Liga',
+                'descripcion' => 'Suerte para esta liga competitiva',
+                'fecha_inicio' => '13-09-2025',
+                'fecha_fin' => '20-09-2025',
+                'ubicacion' => 'Calle 123',
+                'comuna' => 'La cisterna',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+            [
+                'nombre' => 'Torneo de la suerte',
+                'descripcion' => 'Suerte en este torneo competitivo',
+                'fecha_inicio' => '27-09-2025',
+                'fecha_fin' => '04-10-2025',
+                'ubicacion' => 'Calle 123',
+                'comuna' => 'El bosque',
+                'activo' => true,
+                'created_at' => now(),
+                'updated_at' => now()
+            ],
+        ]);
     }
 }
