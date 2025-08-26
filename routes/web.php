@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AsideController;
 use App\Http\Controllers\CamisetasController;
 use App\Http\Controllers\CampeonatoController;
 use App\Http\Controllers\CargosController;
@@ -178,3 +179,10 @@ Route::post('/backoffice/mediocontacto/up/{_id}', [MedioContactoController::clas
 Route::post('/backoffice/mediocontacto/destroy/{_id}', [MedioContactoController::class, 'destroy'])->name('backoffice.mediocontacto.destroy');
 
 // Malcom Bahamondes
+
+// Justin
+Route::get('/backoffice/aside', [AsideController::class, 'index'])->name('backoffice.aside.index');
+Route::post('/backoffice/aside', [AsideController::class, 'store'])->name('backoffice.aside.new');
+Route::post('/backoffice/aside/down/{_id}', [AsideController::class, 'down'])->name('backoffice.aside.down');
+Route::post('/backoffice/aside/up/{_id}', [AsideController::class, 'up'])->name('backoffice.aside.up');
+Route::post('/backoffice/aside/destroy/{_id}', [AsideController::class, 'destroy'])->name('backoffice.aside.destroy');

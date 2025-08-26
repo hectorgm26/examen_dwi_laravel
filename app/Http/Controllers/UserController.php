@@ -34,7 +34,7 @@ class UserController extends Controller
                 'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
             ]
         ];
-        
+
         return view('backoffice/users/registro', $datos);
     }
 
@@ -85,13 +85,13 @@ class UserController extends Controller
             ]
         ];
 
-        
+
         if (Auth::check()) {
             // Si el usuario ya está autenticado, redirígelo a la página principal
             // o a su dashboard.
             return redirect()->route('/')->with('success', 'Tiene una sesión iniciada, ciérrela para iniciar una nueva.');
         }
-        
+
 
         return view('backoffice/users/login', $datos);
     }
@@ -128,7 +128,8 @@ class UserController extends Controller
         return redirect()->route('/')->with('success', 'Sesión cerrada exitosamente.');
     }
 
-    public function showPerfil(){
+    public function showPerfil()
+    {
         if (!Auth::check()) {
             // Verifica si el el usuario ya está autenticado
             return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
@@ -158,11 +159,10 @@ class UserController extends Controller
             'datos' => $datos,
             'user' => $user
         ]);
-
-
     }
-    
-    public function showContacto(){
+
+    public function showContacto()
+    {
         if (!Auth::check()) {
             // Verifica si el el usuario ya está autenticado
             return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
@@ -189,11 +189,10 @@ class UserController extends Controller
         ];
 
         return view('backoffice/users/contact', $datos);
-
-
     }
-    
-    public function showSeguridad(){
+
+    public function showSeguridad()
+    {
         if (!Auth::check()) {
             // Verifica si el el usuario ya está autenticado
             return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
@@ -220,11 +219,10 @@ class UserController extends Controller
         ];
 
         return view('backoffice/users/security', $datos);
-
-
     }
 
-    public function cambiarClave(Request $_request){
+    public function cambiarClave(Request $_request)
+    {
         if (!Auth::check()) {
             // Verifica si el el usuario ya está autenticado
             return redirect()->route('/')->withErrors('Error: No tiene una sesión iniciada.');
@@ -244,7 +242,5 @@ class UserController extends Controller
         } else {
             return redirect()->route('backoffice.user.security')->withErrors('Error: Contraseña actual incorrecta.');
         }
-
-
     }
 }

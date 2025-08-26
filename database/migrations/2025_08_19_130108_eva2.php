@@ -132,6 +132,15 @@ return new class extends Migration
             $table->timestamps();
         });
 
+        Schema::create('aside', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre')->unique();
+            $table->string('ruta')->unique();
+            $table->string('icono');
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
