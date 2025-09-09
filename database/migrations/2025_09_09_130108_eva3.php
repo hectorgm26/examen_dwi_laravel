@@ -64,14 +64,28 @@ return new class extends Migration
             $table->date('fecha_inicio')->nullable();
             $table->date('fecha_fin')->nullable();
             $table->string('ubicacion')->nullable();
-            $table->string('comuna')->nullable();
+            $table->foreignId('comunaId')
+                ->constrained('comuna');
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
 
-        Schema::table('campeonato', function (Blueprint $table) {
-            $table->json('equipos')->nullable();
+        Schema::create('campeonatos_equipos', function (Blueprint $table) {
+            $table->id();
+            $table->integer('campeonatoId');
+            $table->integer('equipoId');
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
         });
+
+        
+        Schema::create('equipo', function (Blueprint $table) {
+            $table->id();
+            $table->string('nombre');
+            $table->boolean('activo')->default(true);
+            $table->timestamps();
+        });
+
     }
 
     /**
@@ -82,9 +96,8 @@ return new class extends Migration
         Schema::dropIfExists('entrenamientos');
         Schema::dropIfExists('jugadores');
         Schema::dropIfExists('persona');
-        Schema::table('campeonato', function (Blueprint $table) {
-            $table->dropColumn('equipos');
-        });
+        Schema::dropIfExists('equipos');
         Schema::dropIfExists('campeonato');
+        Schema::dropIfExists('campeonatos_equipos');
     }
 };

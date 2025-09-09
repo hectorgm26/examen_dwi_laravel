@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\CampeonatoModel;
+use App\Models\CampeonatosEquiposModel;
 use App\Models\ComunasModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -26,8 +27,12 @@ class CampeonatoController extends Controller
         $listaEquipos = [
             [
                 "id" => 1,
-                "nombre" => "Equipo 1"
-            ]
+                "nombre" => "Atlético del Sur"
+            ],
+            [
+                "id" => 2,
+                "nombre" => "Real Metropolitano"
+            ],
             // 'Atlético del Sur',
             // 'Real Metropolitano',
             // 'Unión Capitalina',
@@ -177,12 +182,12 @@ class CampeonatoController extends Controller
             ],
         ];
 
-        $campeonatos = CampeonatoModel::all();
+        
 
         return view('backoffice/campeonato/index', [
             'datos' => $datos,
             'user' => $user,
-            'campeonatos' => $campeonatos,
+            'campeonatos' => $lista,
         ]);
     }
 
@@ -201,19 +206,26 @@ class CampeonatoController extends Controller
             'fecha_fin' => ['required', 'date', 'after_or_equal:fecha_inicio'],
             'ubicacion' => ['required', 'string', 'max:50', 'min:3'],
             'comuna' => ['required'],
-            'equipos' => ['required', 'array'],
+            // 'equipos' => ['required', 'array'],
         ]);
 
-        CampeonatoModel::create([
+        $campeonato = CampeonatoModel::create([
             'nombre' => $request->nombre,
             'descripcion' => $request->descripcion,
             'fecha_inicio' => $request->fecha_inicio,
             'fecha_fin' => $request->fecha_fin,
             'ubicacion' => $request->ubicacion,
-            'comuna' => $request->comuna,
-            'equipos' => $request->equipos,
-            'activo' => $request->activo ?? true,
+            'comunaId' => $request->comuna,
+            'activo' => true,
         ]);
+
+        foreach ($request->equipos as $equipoId) {
+            $camponatoEquipos = CampeonatosEquiposModel::create([
+                'campeonatoId' => $campeonato['id'],
+                'equipoId' => $equipoId,
+                'activo' => true
+            ]);
+        }
 
         return redirect()->back()->with('success', ':) Campeonato creado exitosamente.');
     }

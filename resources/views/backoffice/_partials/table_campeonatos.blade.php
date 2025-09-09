@@ -27,7 +27,7 @@
                     {{ $campeonato->fecha_fin ? \Carbon\Carbon::parse($campeonato->fecha_fin)->format('Y-m-d') : 'N/A' }}
                 </td>
                 <td class="text-center">{{ $campeonato->ubicacion ?? 'N/A' }}</td>
-                <td class="text-center">{{ $campeonato->comuna ?? 'N/A' }}</td>
+                <td class="text-center">{{ $campeonato->comuna['nombre'] ?? 'N/A' }}</td>
                 <td class="text-center">
                     @if ($campeonato->activo == 1)
                         <span class="text-success">Activo</span>

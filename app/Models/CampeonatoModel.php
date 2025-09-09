@@ -17,9 +17,8 @@ class CampeonatoModel extends Model
         'fecha_inicio',
         'fecha_fin',
         'ubicacion',
-        'comuna',
+        'comunaId',
         'activo',
-        'equipos'
     ];
 
     protected $casts = [
@@ -28,4 +27,12 @@ class CampeonatoModel extends Model
         'activo' => 'boolean',
         'equipos' => 'array',
     ];
+
+    /**
+     * Relación con Comuna: Un jugador vive en una comuna.
+     */
+    public function comuna()
+    {
+        return $this->belongsTo(ComunasModel::class, 'comunaId');
+    }
 }

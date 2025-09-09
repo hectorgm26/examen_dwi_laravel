@@ -28,7 +28,7 @@ class JugadoresModel extends Model
         );
     }
 
-        /**
+    /**
      * Relación con PiernaDominante: Un jugador tiene una pierna dominante.
      */
     public function piernaDominante()
@@ -37,9 +37,9 @@ class JugadoresModel extends Model
     }
 
     public function posicion()
-{
-    return $this->belongsTo(PosicionModel::class, 'posiciones_id');
-}
+    {
+        return $this->belongsTo(PosicionModel::class, 'posiciones_id');
+    }
 
     public function camisetas()
     {
@@ -50,5 +50,4 @@ class JugadoresModel extends Model
     {
         return $this->belongsTo(PersonaModel::class, 'persona_id');
     }
-
 }

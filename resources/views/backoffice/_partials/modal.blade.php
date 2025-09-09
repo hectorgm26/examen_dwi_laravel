@@ -24,7 +24,7 @@
 
                             @case('select')
                                 <label class="form-label">{{ $campo['label'] }}</label>
-                                <select name="{{ $campo['name'] }}@if ($campo['control']['type'] == 'multiple') [] @endif"
+                                <select name="{{ $campo['name'] }}@if ($campo['control']['type'] == 'multiple')[]@endif"
                                     class="@foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
                                     @if ($campo['control']['type'] == 'multiple') multiple @endif>
                                     @foreach ($campo['control']['options'] as $opciones)
