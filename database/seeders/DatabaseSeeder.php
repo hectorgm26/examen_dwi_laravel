@@ -864,43 +864,6 @@ class DatabaseSeeder extends Seeder
             ]
         ]);
 
-        //Campeonato: Cristian
-
-        DB::table('campeonato')->insert([
-            [
-                'nombre' => 'Champions',
-                'descripcion' => 'Suerte en este campeonato competitivo',
-                'fecha_inicio' => '30-08-2025',
-                'fecha_fin' => '06-09-2025',
-                'ubicacion' => 'Calle 123',
-                'comuna' => 'San miguel',
-                'activo' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'nombre' => 'Liga',
-                'descripcion' => 'Suerte para esta liga competitiva',
-                'fecha_inicio' => '13-09-2025',
-                'fecha_fin' => '20-09-2025',
-                'ubicacion' => 'Calle 123',
-                'comuna' => 'La cisterna',
-                'activo' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-            [
-                'nombre' => 'Torneo de la suerte',
-                'descripcion' => 'Suerte en este torneo competitivo',
-                'fecha_inicio' => '27-09-2025',
-                'fecha_fin' => '04-10-2025',
-                'ubicacion' => 'Calle 123',
-                'comuna' => 'El bosque',
-                'activo' => true,
-                'created_at' => now(),
-                'updated_at' => now()
-            ],
-        ]);
         //Dias de la semana: Indira
         DB::table('dias_semana')->insert([
             [

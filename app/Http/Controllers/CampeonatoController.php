@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\CampeonatoModel; 
+use App\Models\CampeonatoModel;
+use App\Models\ComunasModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth; 
+use Illuminate\Support\Facades\Auth;
 
 class CampeonatoController extends Controller
 {
@@ -12,52 +13,52 @@ class CampeonatoController extends Controller
     public function index()
     {
         if (!Auth::check()) {
-            // Verifica si el usuario NO está autenticado
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
-        
+
         $user = Auth::user();
 
         $lista = CampeonatoModel::all();
 
-        // $comunasSantiago = [
-        //     'Cerrillos',
-        //     'Cerro Navia',
-        //     'Conchalí',
-        //     'El Bosque',
-        //     'Estación Central',
-        //     'Huechuraba',
-        //     'Independencia',
-        //     'La Cisterna',
-        //     'La Florida',
-        //     'La Granja',
-        //     'La Pintana',
-        //     'La Reina',
-        //     'Las Condes',
-        //     'Lo Barnechea',
-        //     'Lo Espejo',
-        //     'Lo Prado',
-        //     'Macul',
-        //     'Maipú',
-        //     'Ñuñoa',
-        //     'Padre Hurtado',
-        //     'Pedro Aguirre Cerda',
-        //     'Peñalolén',
-        //     'Pirque',
-        //     'Providencia',
-        //     'Pudahuel',
-        //     'Puente Alto',
-        //     'Quilicura',
-        //     'Quinta Normal',
-        //     'Recoleta',
-        //     'Renca',
-        //     'San Bernardo',
-        //     'San Joaquín',
-        //     'San José de Maipo',
-        //     'San Miguel',
-        //     'San Ramón',
-        //     'Santiago'  
-        // ];
+        // $comunas = ComunasModel::all()->pluck('nombre')->toArray();
+        $listaComunas = ComunasModel::all()->where('activo', 1);
+
+        $listaEquipos = [
+            [
+                "id" => 1,
+                "nombre" => "Equipo 1"
+            ]
+            // 'Atlético del Sur',
+            // 'Real Metropolitano',
+            // 'Unión Capitalina',
+            // 'Sporting Cóndores',
+            // 'Deportivo Los Andes',
+            // 'Independiente del Valle',
+            // 'Cumbres FC',
+            // 'Rivera United',
+            // 'Costanera City',
+            // 'Montaña FC',
+            // 'Valle Hermoso',
+            // 'Estrella del Pacífico',
+            // 'Sol Naciente',
+            // 'Furia Roja',
+            // 'Leones Urbanos',
+            // 'Tigres de Acero',
+            // 'Halcones del Maipo',
+            // 'Gladiadores de Santiago',
+            // 'Pumas de la Reina',
+            // 'Dragones de Hierro',
+            // 'Lobos del Bosque',
+            // 'Águilas de Metal',
+            // 'Cazadores del Parque',
+            // 'Gigantes del Poniente',
+            // 'Centauros del Norte',
+            // 'Fénix de Plata',
+            // 'Titanes del Mapocho',
+            // 'Guerreros del Cerro',
+            // 'Jaguares de Fuego',
+            // 'Cobras de Acero'
+        ];
 
         $datos = [
             'textos' => [
@@ -97,7 +98,7 @@ class CampeonatoController extends Controller
                             'element' => 'input',
                             'type' => 'text',
                             'classList' => ['form-control'],
-                            'min' => 40,
+                            'min' => 10,
                             'max' => 250,
                             'placeholder' => 'Introduce la descripcion del campeonato',
                         ],
@@ -106,7 +107,7 @@ class CampeonatoController extends Controller
                     [
                         'label' => 'Fecha de Inicio',
                         'name' => 'fecha_inicio',
-                         'control' => [
+                        'control' => [
                             'element' => 'input',
                             'type' => 'date',
                             'classList' => ['form-control'],
@@ -119,7 +120,7 @@ class CampeonatoController extends Controller
                     [
                         'label' => 'Fecha de Fin',
                         'name' => 'fecha_fin',
-                         'control' => [
+                        'control' => [
                             'element' => 'input',
                             'type' => 'date',
                             'classList' => ['form-control'],
@@ -129,7 +130,7 @@ class CampeonatoController extends Controller
                         ],
                         'required' => true,
                     ],
-                     [
+                    [
                         'label' => 'Ubicación',
                         'name' => 'ubicacion',
                         'control' => [
@@ -142,17 +143,31 @@ class CampeonatoController extends Controller
                         ],
                         'required' => true,
                     ],
-                    // [
-                    //     'label' => 'Comuna',
-                    //     'name' => 'comuna',
-                    //     'control' => [
-                    //         'element' => 'select', 
-                    //         'type' => 'select', 
-                    //         'classList' => ['form-control'],
-                    //         'options' => $comunasSantiago, 
-                    //     ],
-                    //     'required' => true,
-                    // ]
+                    [
+                        'label' => 'Comuna',
+                        'name' => 'comuna',
+                        'control' => [
+                            'element' => 'select',
+                            'options' => $listaComunas,
+                            'type' => 'simple',
+                            'classList' => [
+                                'form-select',
+                                'mb-4',
+                            ],
+                        ],
+                        'required' => true,
+                    ],
+                    [
+                        'label' => 'Equipos',
+                        'name' => 'equipos',
+                        'control' => [
+                            'element' => 'select',
+                            'type' => 'multiple',
+                            'classList' => ['form-select', 'mb-4'],
+                            'options' => $listaEquipos,
+                        ],
+                        'required' => true,
+                    ]
                 ],
             ],
             'dev' => [
@@ -179,15 +194,15 @@ class CampeonatoController extends Controller
 
         $user = Auth::user();
 
-        // Validar los campos del campeonato
         $request->validate([
-            'nombre' => ['required', 'string', 'max:15', 'min:3'],
-            'descripcion' => ['required', 'string', 'max:250', 'min:40'],
+            'nombre' => ['required', 'string', 'max:50', 'min:3'],
+            'descripcion' => ['required', 'string', 'max:250', 'min:10'],
             'fecha_inicio' => ['required', 'date'],
             'fecha_fin' => ['required', 'date', 'after_or_equal:fecha_inicio'],
             'ubicacion' => ['required', 'string', 'max:50', 'min:3'],
-            // 'comuna' => ['required'],
-        ],  $this->messages); 
+            'comuna' => ['required'],
+            'equipos' => ['required', 'array'],
+        ]);
 
         CampeonatoModel::create([
             'nombre' => $request->nombre,
@@ -195,9 +210,10 @@ class CampeonatoController extends Controller
             'fecha_inicio' => $request->fecha_inicio,
             'fecha_fin' => $request->fecha_fin,
             'ubicacion' => $request->ubicacion,
-            // 'comuna' => $request->comuna,
-            'activo' => $request->activo ?? true, 
-        ]); 
+            'comuna' => $request->comuna,
+            'equipos' => $request->equipos,
+            'activo' => $request->activo ?? true,
+        ]);
 
         return redirect()->back()->with('success', ':) Campeonato creado exitosamente.');
     }
@@ -210,14 +226,12 @@ class CampeonatoController extends Controller
 
         $user = Auth::user();
 
-        // Retorna la vista show con el campeonato
-        return view('backoffice.campeonato.show', compact('campeonatoModel')); 
+        return view('backoffice.campeonato.show', compact('campeonatoModel'));
     }
 
     public function destroy(Request $request, $_id)
     {
         if (!Auth::check()) {
-            // Verifica si el usuario NO está autenticado
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
         $user = Auth::user();
@@ -232,7 +246,6 @@ class CampeonatoController extends Controller
     public function down(Request $request, $_id)
     {
         if (!Auth::check()) {
-            // Verifica si el usuario NO está autenticado
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
         $user = Auth::user();
@@ -250,7 +263,6 @@ class CampeonatoController extends Controller
     public function up(Request $request, $_id)
     {
         if (!Auth::check()) {
-            // Verifica si el usuario NO está autenticado
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
         $user = Auth::user();

@@ -11,7 +11,7 @@
 
 <body class="container">
     <h1 class="text-primary">Landing Page</h1>
-    <h3>Esta es una landing page...</h3>
+    <h3>Esta es una landing page... Desde la tablet</h3>
     @include('backoffice/_partials/messages')
     @guest
         <a href="{{ route('user.form.show.login') }}" class="me-2">

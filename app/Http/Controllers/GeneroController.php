@@ -52,7 +52,20 @@ class GeneroController extends Controller
             ],
         ],
         [
-            'label' => 'Nombre',
+            'label' => 'Nombre OTRO',
+            'name' => 'nombre',
+            'required' => true,
+            'control' => [
+                'element' => 'input',
+                'type' => 'text',
+                'classList' => ['form-control', 'mb-4'],
+                'min' => 3,
+                'max' => 50,
+                'placeholder' => 'Ej: Masculino, Femenino, Otro'
+            ],
+        ],
+        [
+            'label' => 'Nuevo Campo',
             'name' => 'nombre',
             'required' => true,
             'control' => [

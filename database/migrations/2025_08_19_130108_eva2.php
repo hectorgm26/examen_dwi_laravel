@@ -69,18 +69,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('campeonato', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre');
-            $table->string('descripcion');
-            $table->date('fecha_inicio')->nullable();
-            $table->date('fecha_fin')->nullable();
-            $table->string('ubicacion')->nullable();
-            $table->string('comuna')->nullable();
-            $table->boolean('activo')->default(true);
-            $table->timestamps();
-        });
-
         Schema::create('dias_semana', function (Blueprint $table) {
             $table->id();
             $table->String('nombre')->unique();
@@ -162,6 +150,7 @@ return new class extends Migration
         Schema::dropIfExists('categoria');
         Schema::dropIfExists('genero');
         Schema::dropIfExists('pierna_dominante');
+        Schema::dropIfExists('aside');
         Schema::dropIfExists('medio_contacto');
     }
 };

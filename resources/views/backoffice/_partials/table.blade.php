@@ -10,6 +10,23 @@
             @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
                 <th>Ubicación</th>
             @endif
+
+            @if (isset($datos['mantenedor']['has_entrenador']) && $datos['mantenedor']['has_entrenador'])
+                <th>Entrenador</th>
+            @endif
+
+            @if (isset($datos['mantenedor']['has_jugador']) && $datos['mantenedor']['has_jugador'])
+                <th>Jugador</th>
+            @endif
+
+            @if (isset($datos['mantenedor']['has_hora_inicio']) && $datos['mantenedor']['has_hora_inicio'])
+                <th>Hora Inicio</th>
+            @endif
+
+            @if (isset($datos['mantenedor']['has_hora_fin']) && $datos['mantenedor']['has_hora_fin'])
+                <th>Hora Fin</th>
+            @endif
+            
             <th>Estado</th>
             <th>Acciones</th>
         </tr>
@@ -30,6 +47,21 @@
                     {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
                     @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
                         <td class="text-center">{{ $item->ubicacion }}</td>
+                    @endif
+                    {{-- Mstrar la celda Entrenador --}}
+                    @if (isset($datos['mantenedor']['has_entrenador']) && $datos['mantenedor']['has_entrenador'])
+                        <td class="text-center">{{ $item->entrenador }}</td>
+                    @endif
+                    {{-- Mostrar la celda Jugador --}}
+                    @if (isset($datos['mantenedor']['has_jugador']) && $datos['mantenedor']['has_jugador'])
+                        <td class="text-center">{{ $item->jugador }}</td>
+                    @endif
+                    {{-- Mostrar la celda Hora Inicio/Fin --}}
+                    @if (isset($datos['mantenedor']['has_hora_inicio']) && $datos['mantenedor']['has_hora_inicio'])
+                        <td class="text-center">{{ $item->hora_inicio }}</td>
+                    @endif
+                    @if (isset($datos['mantenedor']['has_hora_fin']) && $datos['mantenedor']['has_hora_fin'])
+                        <td class="text-center">{{ $item->hora_fin }}</td>
                     @endif
                     <td class="text-center">
                         @if ($item->activo == 1)

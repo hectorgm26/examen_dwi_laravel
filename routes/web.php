@@ -10,9 +10,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DiasSemanaController;
+use App\Http\Controllers\EntrenamientosController;
 use App\Http\Controllers\GeneroController;
 use App\Http\Controllers\HoraFinController;
 use App\Http\Controllers\HorainicioController;
+use App\Http\Controllers\JugadoresController;
 use App\Http\Controllers\MedioContactoController;
 use App\Http\Controllers\MediosPagosController;
 use App\Http\Controllers\NacionalidadController;
@@ -185,7 +187,7 @@ Route::post('/backoffice/mediocontacto/down/{_id}', [MedioContactoController::cl
 Route::post('/backoffice/mediocontacto/up/{_id}', [MedioContactoController::class, 'up'])->name('backoffice.mediocontacto.up');
 Route::post('/backoffice/mediocontacto/destroy/{_id}', [MedioContactoController::class, 'destroy'])->name('backoffice.mediocontacto.destroy');
 
-// Malcom Bahamondes
+// Malcolm Bahamondes
 
 // Justin
 Route::get('/backoffice/aside', [AsideController::class, 'index'])->name('backoffice.aside.index');
@@ -193,3 +195,21 @@ Route::post('/backoffice/aside', [AsideController::class, 'store'])->name('backo
 Route::post('/backoffice/aside/down/{_id}', [AsideController::class, 'down'])->name('backoffice.aside.down');
 Route::post('/backoffice/aside/up/{_id}', [AsideController::class, 'up'])->name('backoffice.aside.up');
 Route::post('/backoffice/aside/destroy/{_id}', [AsideController::class, 'destroy'])->name('backoffice.aside.destroy');
+
+
+// Jugadores: Paula, Indira, Javiera
+
+Route::get('/backoffice/jugadores', [JugadoresController::class, 'index'])->name('backoffice.jugadores.index');
+Route::post('/backoffice/jugadores', [JugadoresController::class, 'store'])->name('backoffice.jugadores.new');
+Route::post('/backoffice/jugadores/down/{_id}', [JugadoresController::class, 'down'])->name('backoffice.jugadores.down');
+Route::post('/backoffice/jugadores/up/{_id}', [JugadoresController::class, 'up'])->name('backoffice.jugadores.up');
+Route::post('/backoffice/jugadores/destroy/{_id}', [JugadoresController::class, 'destroy'])->name('backoffice.jugadores.destroy');
+
+
+//Entrenamientos: Miguel, Justin, Malcolm
+
+Route::get('/backoffice/entrenamiento', [EntrenamientosController::class, 'index'])->name('backoffice.entrenamiento.index');
+Route::post('/backoffice/entrenamiento', [EntrenamientosController::class, 'store'])->name('backoffice.entrenamiento.new');
+Route::post('/backoffice/entrenamiento/down/{_id}', [EntrenamientosController::class, 'down'])->name('backoffice.entrenamiento.down');
+Route::post('/backoffice/entrenamiento/up/{_id}', [EntrenamientosController::class, 'up'])->name('backoffice.entrenamiento.up');
+Route::post('/backoffice/entrenamiento/destroy/{_id}', [EntrenamientosController::class, 'destroy'])->name('backoffice.entrenamiento.destroy');

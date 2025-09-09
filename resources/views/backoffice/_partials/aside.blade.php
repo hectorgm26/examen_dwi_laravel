@@ -178,5 +178,17 @@
                 <div>Usuarios</div>
             </a>
         </li>
+        <li class="menu-item @if (Route::currentRouteName() == 'backoffice.entrenamiento.index') active @endif">
+            <a href="{{ route('backoffice.entrenamiento.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-users"></i>
+                <div>Entrenamiento</div>
+            </a>
+        </li>
+        <li class="menu-item @if (str_starts_with(Route::currentRouteName(), 'backoffice.jugadores')) active @endif">
+            <a href="{{ route('backoffice.jugadores.index') }}" class="menu-link">
+                <i class="menu-icon icon-base ti tabler-users"></i>
+                <div>Jugadores</div>
+            </a>
+        </li>
     </ul>
 </aside>

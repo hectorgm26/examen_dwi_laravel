@@ -13,33 +13,12 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-center mb-4">
-                            <h6 class="fw-normal mb-0 text-body">Total 4 users</h6>
-                            <ul class="list-unstyled d-flex align-items-center avatar-group mb-0">
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    title="Vinnie Mostowy" class="avatar pull-up">
-                                    <img class="rounded-circle" src="../../assets/img/avatars/5.png" alt="Avatar" />
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    title="Allen Rieske" class="avatar pull-up">
-                                    <img class="rounded-circle" src="../../assets/img/avatars/12.png" alt="Avatar" />
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    title="Julee Rossignol" class="avatar pull-up">
-                                    <img class="rounded-circle" src="../../assets/img/avatars/6.png" alt="Avatar" />
-                                </li>
-                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom" data-bs-placement="top"
-                                    title="Kaith D'souza" class="avatar pull-up">
-                                    <img class="rounded-circle" src="../../assets/img/avatars/3.png" alt="Avatar" />
-                                </li>
-                            </ul>
+                            <h6 class="fw-normal mb-0 text-body">Total {{ count($campeonatos) }} campeonatos</h6>
                         </div>
                         <div class="d-flex justify-content-between align-items-end">
                             <div class="role-heading">
-                                <h5 class="mb-1">Administrator</h5>
-                                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#addRoleModal"
-                                    class="role-edit-modal"><span>Editar Campeonato</span></a>
+                                <h5 class="mb-1">Campeonatos</h5>
                             </div>
-                            <a href="javascript:void(0);"><i class="icon-base ti tabler-copy icon-md text-heading"></i></a>
                         </div>
                     </div>
                 </div>
@@ -50,7 +29,7 @@
                     <div class="row h-100">
                         <div class="col-sm-5">
                             <div class="d-flex align-items-end h-100 justify-content-center mt-sm-0 mt-4">
-                                <img src="../../assets/img/illustrations/add-new-roles.png" class="img-fluid" alt="Image"
+                                <img src="{{ asset('assets/img/illustrations/add-new-roles.png') }}" class="img-fluid" alt="Image"
                                     width="83" />
                             </div>
                         </div>
@@ -62,7 +41,7 @@
                                 </button>
                                 <p class="mb-0">
                                     Añadir nuevo campeonato, <br />
-                                    if it doesn't exist.
+                                    si no existe.
                                 </p>
                             </div>
                         </div>
@@ -95,5 +74,52 @@
         ])
         @endcomponent
         <!--/ Add Role Modal -->
+
+        <!-- Ver Equipos Modal -->
+        <div class="modal fade" id="verEquiposModal" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Equipos del Campeonato</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <ul id="listaEquipos" class="list-group">
+                            <!-- Los equipos se cargarán aquí dinámicamente -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ Ver Equipos Modal -->
     </div>
 @endsection
+
+@push('scripts')
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var verEquiposModal = document.getElementById('verEquiposModal');
+        verEquiposModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var campeonatoJson = button.getAttribute('data-campeonato');
+            var campeonato = JSON.parse(campeonatoJson);
+            var listaEquipos = document.getElementById('listaEquipos');
+            listaEquipos.innerHTML = '';
+
+            if (campeonato.equipos && campeonato.equipos.length > 0) {
+                campeonato.equipos.forEach(function (equipo) {
+                    var li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.textContent = equipo;
+                    listaEquipos.appendChild(li);
+                });
+            } else {
+                var li = document.createElement('li');
+                li.className = 'list-group-item';
+                li.textContent = 'No hay equipos registrados para este campeonato.';
+                listaEquipos.appendChild(li);
+            }
+        });
+    });
+</script>
+@endpush

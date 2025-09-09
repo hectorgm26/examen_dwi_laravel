@@ -13,22 +13,71 @@
                     @foreach ($campos as $campo)
                         @switch($campo['control']['element'])
                             @case('input')
-                                <label class="form-label">{{ $campo['label'] }}</label>
-                                <input type="{{ $campo['control']['type'] }}" name="{{ $campo['name'] }}"
-                                    class="@foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
-                                    minlength="{{ $campo['control']['min'] }}" maxlength="{{ $campo['control']['max'] }}"
-                                    placeholder="{{ $campo['control']['placeholder'] }}">
+                                <div class="form-floating mb-3">
+                                    <input type="{{ $campo['control']['type'] }}"
+                                        class="@foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
+                                        name="{{ $campo['name'] }}" placeholder="{{ $campo['control']['placeholder'] }}"
+                                        minlength="{{ $campo['control']['min'] }}" maxlength="{{ $campo['control']['max'] }}">
+                                    <label for="floatingInput">{{ $campo['label'] }}</label>
+                                </div>
                             @break
 
                             @case('select')
                                 <label class="form-label">{{ $campo['label'] }}</label>
-                                <select name="{{ $campo['name'] }}@if ($campo['control']['type'] == 'multiple')[]@endif"
+                                <select name="{{ $campo['name'] }}@if ($campo['control']['type'] == 'multiple') [] @endif"
                                     class="@foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
                                     @if ($campo['control']['type'] == 'multiple') multiple @endif>
                                     @foreach ($campo['control']['options'] as $opciones)
-                                        <option value="{{ $opciones['id'] }}">{{ $opciones['nombre'] }}</option>
+                                        @php
+                                            try {
+                                                @endphp
+                                                <option value="{{ $opciones['id'] }}">{{ $opciones['nombre'] }}</option>
+                                                @php
+                                            } catch (\Throwable $th) {
+                                                echo '<option>Error :( en option</option>';
+                                            }
+                                        @endphp
                                     @endforeach
                                 </select>
+                                {{-- @php
+                                    $isMultiple =
+                                        isset($campo['control']['multiple']) && $campo['control']['multiple'] === true;
+                                    $selectName = $campo['name'] . ($isMultiple ? '[]' : '');
+                                @endphp
+                                <label class="form-label">{{ $campo['label'] }}</label>
+                                <select name="{{ $selectName }}"
+                                    class="form-select @foreach ($campo['control']['classList'] as $class){{ $class }} @endforeach"
+                                    {{ $isMultiple ? 'multiple' : '' }}
+                                    @if (isset($campo['control']['attributes'])) @foreach ($campo['control']['attributes'] as $attrKey => $attrVal)
+                                            {{ $attrKey }}="{{ $attrVal }}"
+                                        @endforeach @endif>
+                                    @foreach ($campo['control']['options'] as $option)
+                                        @php
+                                            $optionValue = $option['value'] ?? null;
+                                            $optionLabel = $option['label'] ?? 'Sin nombre';
+                                            $isSelected = false;
+
+                                            if (isset($campo['value']) && $optionValue !== null) {
+                                                if (
+                                                    is_array($campo['value']) &&
+                                                    in_array($optionValue, $campo['value'])
+                                                ) {
+                                                    $isSelected = true;
+                                                } elseif ($campo['value'] == $optionValue) {
+                                                    $isSelected = true;
+                                                }
+                                            }
+                                        @endphp
+
+                                        @if ($optionValue !== null)
+                                            <option value="{{ $optionValue }}" {{ $isSelected ? 'selected' : '' }}>
+                                                {{ $optionLabel }}
+                                            </option>
+                                        @endif
+                                    @endforeach
+
+                                </select>
+                                --}}
                             @break
 
                             @default

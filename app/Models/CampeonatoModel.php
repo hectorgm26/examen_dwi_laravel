@@ -18,12 +18,14 @@ class CampeonatoModel extends Model
         'fecha_fin',
         'ubicacion',
         'comuna',
-        'activo'
+        'activo',
+        'equipos'
     ];
 
     protected $casts = [
         'fecha_inicio' => 'date',
         'fecha_fin' => 'date',
         'activo' => 'boolean',
+        'equipos' => 'array',
     ];
 }

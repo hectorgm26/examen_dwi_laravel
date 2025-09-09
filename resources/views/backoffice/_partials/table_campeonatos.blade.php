@@ -29,37 +29,38 @@
                 <td class="text-center">{{ $campeonato->ubicacion ?? 'N/A' }}</td>
                 <td class="text-center">{{ $campeonato->comuna ?? 'N/A' }}</td>
                 <td class="text-center">
-                @if ($campeonato->activo == 1)
-                            <span class="text-success">Activo</span>
-                        @else
-                            <span class="text-danger">Desactivado</span>
-                        @endif
-                    </td>
-                <td class="text-center">
-                    ver
-                    actualizar                     
                     @if ($campeonato->activo == 1)
-                            <form action="{{ route($datos['mantenedor']['routes']['down'], $campeonato->id) }}" method="POST" class="d-inline-block">
-                                @csrf
-                                <button type="submit" class="btn btn-danger" onclick="this.disabled=true; this.innerHTML='<i class=\'icon-base ti tabler-loader\'></i> Procesando...'; setTimeout(() => this.form.submit(), 500);">
-                                    <i class="icon-base ti tabler-arrow-down"></i>
-                                </button>
-                            </form>
-                        @endif
-                        @if ($campeonato->activo == 0)
-                            <form action="{{ route($datos['mantenedor']['routes']['up'], $campeonato->id) }}" method="POST" class="d-inline-block">
-                                @csrf
-                                <button type="submit" class="btn btn-primary" onclick="this.disabled=true; this.innerHTML='<i class=\'icon-base ti tabler-loader\'></i> Procesando...'; setTimeout(() => this.form.submit(), 500);">
-                                    <i class="icon-base ti tabler-arrow-up"></i>
-                                </button>
-                            </form>
-                        @endif
-                    @if (isset($datos['mantenedor']['routes']['destroy']))
-                    {{-- <form action="{{ route($datos['mantenedor']['routes']['destroy'], $campeonato->id) }}" method="POST">
+                        <span class="text-success">Activo</span>
+                    @else
+                        <span class="text-danger">Desactivado</span>
+                    @endif
+                </td>
+                <td class="text-center">
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                        data-bs-target="#verEquiposModal" data-campeonato='{{ json_encode($campeonato) }}'>
+                        Ver Equipos
+                    </button>
+                    @if ($campeonato->activo == 1)
+                        <form action="{{ route($datos['mantenedor']['routes']['down'], $campeonato->id) }}"
+                            method="POST" class="d-inline-block">
                             @csrf
-                            <button type="submit" class="btn btn-danger"><i
-                                    class="icon-base ti tabler-trash"></i></button>
-                        </form> --}}
+                            <button type="submit" class="btn btn-danger"
+                                onclick="this.disabled=true; this.innerHTML='<i class=\'icon-base ti tabler-loader\'></i> Procesando...'; setTimeout(() => this.form.submit(), 500);">
+                                <i class="icon-base ti tabler-arrow-down"></i>
+                            </button>
+                        </form>
+                    @endif
+                    @if ($campeonato->activo == 0)
+                        <form action="{{ route($datos['mantenedor']['routes']['up'], $campeonato->id) }}" method="POST"
+                            class="d-inline-block">
+                            @csrf
+                            <button type="submit" class="btn btn-primary"
+                                onclick="this.disabled=true; this.innerHTML='<i class=\'icon-base ti tabler-loader\'></i> Procesando...'; setTimeout(() => this.form.submit(), 500);">
+                                <i class="icon-base ti tabler-arrow-up"></i>
+                            </button>
+                        </form>
+                    @endif
+                    @if (isset($datos['mantenedor']['routes']['destroy']))
                     @endif
                 </td>
             </tr>
