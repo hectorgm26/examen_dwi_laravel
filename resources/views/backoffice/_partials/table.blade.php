@@ -5,7 +5,10 @@
             @if ($datos['mantenedor']['fields'][0]['label'] == 'Abreviatura')
                 <th>Abreviatura</th>
             @endif
-            <th>Nombre</th>
+            {{-- Directiva para mostrar la columna Nombre condicionalmente --}}
+            @if (isset($datos['mantenedor']['has_nombre']) && $datos['mantenedor']['has_nombre'])
+                <th>Nombre</th>
+            @endif
             {{-- Directiva para mostrar la columna Ubicación condicionalmente --}}
             @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
                 <th>Ubicación</th>
@@ -18,7 +21,18 @@
             @if (isset($datos['mantenedor']['has_jugador']) && $datos['mantenedor']['has_jugador'])
                 <th>Jugador</th>
             @endif
-
+            {{-- Directiva para mostrar la columna Categoria condicionalmente --}}
+            @if (isset($datos['mantenedor']['has_categoria']) && $datos['mantenedor']['has_categoria'])
+                <th>Categoria</th>
+            @endif
+            {{-- Directiva para mostrar la columna Recinto condicionalmente --}}
+            @if (isset($datos['mantenedor']['has_recinto']) && $datos['mantenedor']['has_recinto'])
+                <th>Recinto</th>
+            @endif
+            {{-- Directiva para mostrar la columna Dia condicionalmente --}}
+            @if (isset($datos['mantenedor']['has_dia']) && $datos['mantenedor']['has_dia'])
+                <th>Dia Entrenamiento</th>
+            @endif
             @if (isset($datos['mantenedor']['has_hora_inicio']) && $datos['mantenedor']['has_hora_inicio'])
                 <th>Hora Inicio</th>
             @endif
@@ -43,7 +57,10 @@
                     @if ($item->abreviatura)
                         <td class="text-center">{{ $item->abreviatura }}</td>
                     @endif
-                    <td class="text-center">{{ $item->nombre }}</td>
+                    {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
+                    @if (isset($datos['mantenedor']['has_nombre']) && $datos['mantenedor']['has_nombre'])
+                        <td class="text-center">{{ $item->Nombre }}</td>
+                    @endif
                     {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
                     @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])
                         <td class="text-center">{{ $item->ubicacion }}</td>
@@ -55,6 +72,18 @@
                     {{-- Mostrar la celda Jugador --}}
                     @if (isset($datos['mantenedor']['has_jugador']) && $datos['mantenedor']['has_jugador'])
                         <td class="text-center">{{ $item->jugador }}</td>
+                    @endif
+                    {{-- Mostrar la celda Categoria Entrenamiento --}}
+                    @if (isset($datos['mantenedor']['has_categoria']) && $datos['mantenedor']['has_categoria'])
+                        <td class="text-center">{{ $item->categoria }}</td>
+                    @endif
+                    {{-- Mostrar la celda Recinto Entrenamiento --}}
+                    @if (isset($datos['mantenedor']['has_recinto']) && $datos['mantenedor']['has_recinto'])
+                        <td class="text-center">{{ $item->recinto }}</td>
+                    @endif
+                    {{-- Mostrar la celda Dia Entrenamiento --}}
+                    @if (isset($datos['mantenedor']['has_dia']) && $datos['mantenedor']['has_dia'])
+                        <td class="text-center">{{ $item->dia }}</td>
                     @endif
                     {{-- Mostrar la celda Hora Inicio/Fin --}}
                     @if (isset($datos['mantenedor']['has_hora_inicio']) && $datos['mantenedor']['has_hora_inicio'])

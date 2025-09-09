@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Models\EntrenamientosModel;
+use App\Models\CategoriaModel;
+use App\Models\RecintosModel;
+use App\Models\DiasSemanaModel;
+use App\Models\EntrenadoresModel;
+use App\Models\JugadoresModel;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,6 +25,20 @@ class EntrenamientosController extends Controller
         $user = Auth::user();
 
         $lista = EntrenamientosModel::all();
+        $listaEntrenadores = [
+            [
+                "id" => 1,
+                "nombre" => "entrenador 1"
+            ],
+            [
+                "id" => 2,
+                "nombre" => "entrenador 2"
+            ],
+        ];
+        // $listaJugadores = JugadoresModel::all()->where('activo', 1);
+        $listaCategorias = CategoriaModel::all()->where('activo', 1);
+        $listaRecintos = RecintosModel::all()->where('activo', 1);
+        $listaDias = DiasSemanaModel::all()->where('activo', 1);
 
         $datos = [
             'textos' => [
@@ -42,56 +61,85 @@ class EntrenamientosController extends Controller
                     'delete' => 'backoffice.entrenamiento.destroy',
                 ],
                 'fields' => [
-                    //Nombre
-                    [
-                        'label' => 'Nombre',
-                        'name' => 'entrenamiento_nombre',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'input',
-                            'type' => 'text',
-                            'classList' => [
-                                'form-control',
-                                'mb-4'
-                            ],
-                            'min' => 3,
-                            'max' => 50,
-                            'placeholder' => 'Ingrese un Nombre de Entrenamiento'
-                        ],
-                        'access' => [
-                            'editableIn' => [
-                                'new' => true,
-                                'edit' => true,
-                                'show' => false,
-                                'up' => false,
-                                'down' => false,
-                                'delete' => false
-                            ],
-                            'readIn' => [
-                                'new' => true,
-                                'edit' => true,
-                                'show' => true,
-                                'up' => true,
-                                'down' => true,
-                                'delete' => true
-                            ]
-                        ]
-                    ],
                     //Entrenador
                     [
-                        'label' => 'Entrenador',
+                        'label' => 'Entrenadores (Pueden ser 1 o más)',
                         'name' => 'entrenador',
                         'required' => true,
                         'control' => [
-                            'element' => 'input',
-                            'type' => 'text',
+                            'element' => 'select',
+                            'options' => $listaEntrenadores,
+                            'type' => 'simple',
                             'classList' => [
-                                'form-control',
-                                'mb-4'
+                                'form-select',
+                                'mb-4',
                             ],
-                            'min' => 3,
-                            'max' => 50,
-                            'placeholder' => 'Ingrese un Nombre de Entrenador'
+                        ],
+                        'access' => [
+                            'editableIn' => [
+                                'new' => true,
+                                'edit' => true,
+                                'show' => false,
+                                'up' => false,
+                                'down' => false,
+                                'delete' => false
+                            ],
+                            'readIn' => [
+                                'new' => true,
+                                'edit' => true,
+                                'show' => true,
+                                'up' => true,
+                                'down' => true,
+                                'delete' => true
+                            ]
+                        ],
+                    ],
+                    //Jugador
+                    // [
+                    //     'label' => 'Jugador',
+                    //     'name' => 'jugador',
+                    //     'required' => true,
+                    //     'control' => [
+                    //         'element' => 'select',
+                    //         'options' => $listaJugadores,
+                    //         'type' => 'simple',
+                    //         'classList' => [
+                    //             'form-select',
+                    //             'mb-4',
+                    //         ],  
+                    //     ],          
+                    //     'access' => [
+                    //         'editableIn' => [
+                    //             'new' => true,
+                    //             'edit' => true,
+                    //             'show' => false,
+                    //             'up' => false,
+                    //             'down' => false,
+                    //             'delete' => false
+                    //         ],
+                    //         'readIn' => [
+                    //             'new' => true,
+                    //             'edit' => true,
+                    //             'show' => true,
+                    //             'up' => true,
+                    //             'down' => true,
+                    //             'delete' => true
+                    //         ]
+                    //         ]
+                    // ],
+                    //Categoria
+                    [
+                        'label' => 'Categoria (Pueden ser 1 o más)',
+                        'name' => 'categoria',
+                        'required' => true,
+                        'control' => [
+                            'element' => 'select',
+                            'options' => $listaCategorias,
+                            'type' => 'simple',
+                            'classList' => [
+                                'form-select',
+                                'mb-4',
+                            ],
                         ],
                         'access' => [
                             'editableIn' => [
@@ -112,21 +160,52 @@ class EntrenamientosController extends Controller
                             ]
                         ]
                     ],
-                    //Jugador
+                    //Recinto
                     [
-                        'label' => 'Jugador',
-                        'name' => 'jugador',
+                        'label' => 'Recinto Entrenamiento',
+                        'name' => 'recinto',
                         'required' => true,
                         'control' => [
-                            'element' => 'input',
-                            'type' => 'text',
+                            'element' => 'select',
+                            'options' => $listaRecintos,
+                            'type' => 'simple',
                             'classList' => [
-                                'form-control',
-                                'mb-4'
+                                'form-select',
+                                'mb-4',
                             ],
-                            'min' => 3,
-                            'max' => 50,
-                            'placeholder' => 'Ingrese un Nombre de Jugador'
+                        ],
+                        'access' => [
+                            'editableIn' => [
+                                'new' => true,
+                                'edit' => true,
+                                'show' => false,
+                                'up' => false,
+                                'down' => false,
+                                'delete' => false
+                            ],
+                            'readIn' => [
+                                'new' => true,
+                                'edit' => true,
+                                'show' => true,
+                                'up' => true,
+                                'down' => true,
+                                'delete' => true
+                            ]
+                        ]
+                    ],
+                    //Dia Entrenamiento
+                    [
+                        'label' => 'dia',
+                        'name' => 'dia',
+                        'required' => true,
+                        'control' => [
+                            'element' => 'select',
+                            'options' => $listaDias,
+                            'type' => 'simple',
+                            'classList' => [
+                                'form-select',
+                                'mb-4',
+                            ],
                         ],
                         'access' => [
                             'editableIn' => [
@@ -149,7 +228,7 @@ class EntrenamientosController extends Controller
                     ],
                     //Hora Inicio
                     [
-                        'label' => 'hora_inicio',
+                        'label' => 'Hora de Inicio de la tabla de inicio',
                         'name' => 'hora_inicio',
                         'required' => true,
                         'control' => [
@@ -184,7 +263,7 @@ class EntrenamientosController extends Controller
                     ],
                     //Hora Fin
                     [
-                        'label' => 'hora_fin',
+                        'label' => 'Hora de Fin de la tabla de fin',
                         'name' => 'hora_fin',
                         'required' => true,
                         'control' => [
@@ -217,11 +296,50 @@ class EntrenamientosController extends Controller
                             ]
                         ]
                     ],
+                    //Hora Inicio
+                    [
+                        'label' => 'Cantidad de Semanas Consecutivas',
+                        'name' => 'semanas',
+                        'required' => true,
+                        'control' => [
+                            'element' => 'input',
+                            'type' => 'number',
+                            'classList' => [
+                                'form-control',
+                                'mb-4'
+                            ],
+                            'min' => 1,
+                            'max' => 50,
+                            'placeholder' => 'Ingrese la cantidad de semanas consecutivas que se realizará el entrenamiento.'
+                        ],
+                        'access' => [
+                            'editableIn' => [
+                                'new' => true,
+                                'edit' => true,
+                                'show' => false,
+                                'up' => false,
+                                'down' => false,
+                                'delete' => false
+                            ],
+                            'readIn' => [
+                                'new' => true,
+                                'edit' => true,
+                                'show' => true,
+                                'up' => true,
+                                'down' => true,
+                                'delete' => true
+                            ]
+                        ]
+                    ],
                 ],
                 'has_jugador' => true,
                 'has_entrenador' => true,
                 'has_hora_inicio' => true,
                 'has_hora_fin' => true,
+                'has_ubicacion' => false,
+                'has_categoria' => true,
+                'has_recinto' => true,
+                'has_dia' => true,
             ],
             'dev' => [
                 'nombre' => 'Instituto Profesional San Sebastián',
@@ -246,17 +364,43 @@ class EntrenamientosController extends Controller
         $user = Auth::user();
 
         $request->validate([
-            'entrenamiento_nombre' => ['required', 'string', 'max:50', 'min:3'],
+            'entrenador',
+            'jugador',
+            'categoria',
+            'recinto',
+            'dia',
+            'hora_inicio',
+            'hora_fin',
         ], $this->messages);
 
         $nuevo = EntrenamientosModel::create([
-            'nombre' => $request->entrenamiento_nombre,
-            'entrenador' => $request->entrenador,
-            'jugador' => $request->jugador,
-            'hora_inicio' => $request->hora_inicio,
-            'hora_fin' => $request->hora_fin,
+            // 'entrenador' => $request->entrenador,
+            // 'jugador' => $request->jugador,
+            // 'categoria' => $request->categoria,
+            'recinto' => $request->recinto,
+            'dia' => $request->dia, // guardar ID
+            'hora_inicio' => $request->hora_inicio, // guardar ID
+            'hora_fin' => $request->hora_fin, // guardar ID
             'activo' => 1,
+            //agregar estado del entrenamiento: 'Proximo Entrenamiento', 'Confirmado', 'Suspendido - Por lluvia', 'Suspendido - Por enfermedad del profe'
         ]);
+
+        //foreach cantidadSemanas
+            // Entrenadores van en otra tabla
+            //foreach -> entrenadores
+            // entrenamiento_entrenador
+                // id
+                // entrenamientoId
+                // entrenadorId
+                // activo + timestamps
+            
+            //foreach -> categorias
+            // entrenamiento_categorias
+                // id
+                // entrenamientoId
+                // categoriaId
+                // activo + timestamps
+
 
         return redirect()->back()->with('success', ':) Entrenamiento creado exitosamente.');
     }

@@ -48,9 +48,7 @@ return new class extends Migration
 
         Schema::create('entrenamientos', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre')->unique();
             $table->string('entrenador');
-            $table->string('jugador');
             $table->time('hora_inicio');
             $table->time('hora_fin');
             $table->boolean('activo')->default(true);
