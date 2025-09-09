@@ -1,7 +1,7 @@
 <?php
- 
+
 namespace App\Http\Controllers;
- 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\JugadoresModel;
@@ -19,7 +19,7 @@ use App\Services\PersonaService;
 use Illuminate\Validation\Rule;
 use Carbon\Carbon;
 
- 
+
 class JugadoresController extends Controller
 {
     public function index()
@@ -30,7 +30,7 @@ class JugadoresController extends Controller
 
         $user = Auth::user();
 
-        
+
         $lista = JugadoresModel::with([
             'persona.user',
             'persona.genero',
@@ -42,55 +42,14 @@ class JugadoresController extends Controller
             'posicion', // Relación principal para FK posiciones_id
         ])->get();
 
-        $generos = GeneroModel::all();
-        //$comuna = ComunasModel::all();
-        $oficios = OficiosModel::all();
-        //$medioContacto = MedioContactoModel::all();
-        $posiciones = PosicionModel::all();
-        $piernaDominante = PiernaDominanteModel::all();
-        $nacionalidad = NacionalidadModel::where('activo', 1)->get();
-        $camisetas = CamisetasModel::where('activo', 1)->get();
+        $listaGeneros = GeneroModel::all()->where('activo', 1);
+        $listaOficios = OficiosModel::all()->where('activo', 1);
+        $listaNacionalidad = NacionalidadModel::all()->where('activo', 1);
+        $listaPosiciones = PosicionModel::all()->where('activo', 1);
+        $listaPiernaDominante = PiernaDominanteModel::all()->where('activo', 1);
+        $listaCamisetas = CamisetasModel::all()->where('activo', 1);
 
-
-        $opcionesGenero = $generos->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();
-
-        /*$opcionesComuna = $comuna->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();*/
-
-        $opcionesOficios = $oficios->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();
-
-        /*$opcionesMedioContacto = $medioContacto->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();*/
-
-        $opcionesPosiciones = $posiciones->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();
-
-        $opcionesPiernaDominante = $piernaDominante->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();
-
-        $opcionesNacionalidad = $nacionalidad->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();
-
-        $opcionesCamisetas = $camisetas->map(fn($g) => [
-            'value' => $g->id,
-            'label' => $g->nombre
-        ])->toArray();
+        // dd($listaNacionalidad);
 
         $datos = [
             'textos' => [
@@ -125,6 +84,10 @@ class JugadoresController extends Controller
                             'classList' => ['form-control', 'mb-4'],
                             'placeholder' => '12.345.678-9'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
                     [
                         'label' => 'Nombre',
@@ -138,7 +101,12 @@ class JugadoresController extends Controller
                             'max' => 50,
                             'placeholder' => 'Nombre del jugador'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
+                    // Apellido
                     [
                         'label' => 'Apellido',
                         'name' => 'apellido',
@@ -151,186 +119,118 @@ class JugadoresController extends Controller
                             'max' => 50,
                             'placeholder' => 'Apellido del jugador'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
-                    
-[
-    'label' => 'Fecha de Nacimiento',
-    'name' => 'fechaNacimiento',
-    'required' => true,
-    'control' => [
-        'element' => 'input',
-        'type' => 'date',
-        'classList' => ['form-control', 'mb-4'],
-        'min' => 3,
-        'max' => 50,
-        'placeholder' => 'Ingrese fecha de nacimiento'
-    ],
-    'access' => [
-        'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
-        'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
-    ]
-],
-
-                    //Edad
-                    
-                    /*
-[
-    'label' => 'Edad',
-    'name' => 'edad',
-    'required' => true,
-    'control' => [
-        'element' => 'input',
-        'type' => 'number',
-        'min' => 0,
-        'max' => null,
-        'classList' => ['form-control', 'mb-4'],
-        'placeholder' => null,
-    ],
-],
-*/
-                    //Cargo
-                    //Genero
+                    // Fecha de Nacimiento
                     [
-                        'label' => 'Género',
-                        'name' => 'genero_id',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'select',
-                            'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesGenero,
-                            'disabled' => $generos->isEmpty(),
-                            'placeholder' => $generos->isEmpty() ? 'Sin registros' : 'Seleccione género'
-                        ],
-                    ],
-                    //Comuna
-                    /*[
-                        'label' => 'Comuna',
-                        'name' => 'comuna_id',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'select',
-                            'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesComuna,
-                            'disabled' => $comuna->isEmpty(),
-                            'placeholder' => $comuna->isEmpty() ? 'Sin registros' : 'Seleccione comuna'
-                        ],
-                    ],
-                    */
-                    //Oficios
-                    [
-                        'label' => 'Oficios',
-                        'name' => 'oficios_id',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'select',
-                            'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesOficios,
-                            'disabled' => $oficios->isEmpty(),
-                            'placeholder' => $oficios->isEmpty() ? 'Sin registros' : 'Seleccione oficio'
-                        ],
-                    ],
-
-                    //Medio Contacto
-                    /*[
-                        'label' => 'Medios de contacto',
-                        'name' => 'medio_contacto_id',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'select',
-                            'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesMedioContacto,
-                            'disabled' => $medioContacto->isEmpty(), 
-                            'placeholder' => $medioContacto->isEmpty() ? 'Sin registros' : 'Seleccione medio de contacto'
-                        ],
-                    ],
-                    */
-
-                    //Telefono 
-                    /*                    
-                    [
-                        'label' => 'Telefono',
-                        'name' => 'telefono',
+                        'label' => 'Fecha de Nacimiento',
+                        'name' => 'fechaNacimiento',
                         'required' => true,
                         'control' => [
                             'element' => 'input',
-                            'type' => 'number',
-                            'min' => 0,
-                            'max' => null,
-                            'classList' => ['form-control', 'mb-4'],
-                            'placeholder' => '+12345678',
-                        ],
-                    ],
-                    */
-                    //Correo
-                    /*
-                    [
-                        'label' => 'Correo',
-                        'name' => 'correo',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'input',
-                            'type' => 'email',
+                            'type' => 'date',
                             'classList' => ['form-control', 'mb-4'],
                             'min' => 3,
                             'max' => 50,
-                            'placeholder' => 'example@example.com'
+                            'placeholder' => 'Ingrese fecha de nacimiento'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
-                    */
-                    //Direccion
-                    /*
+                    //Genero
                     [
-                        'label' => 'Direccion',
-                        'name' => 'direccion',
-                        'required' => true,
-                        'control' => [
-                            'element' => 'input',
-                            'type' => 'text',
-                            'classList' => ['form-control', 'mb-4'],
-                            'min' => 3,
-                            'max' => 100,
-                            'placeholder' => null,
-                        ],
-                    ],
-                    */
-                    //Nacionalidad
-                    [
-                        'label' => 'Nacionalidad',
-                        'name' => 'nacionalidad_id',
+                        'label' => 'Género',
+                        'name' => 'generoId',
                         'required' => true,
                         'control' => [
                             'element' => 'select',
+                            'type' => 'simple',
                             'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesNacionalidad,
-                            'disabled' => $nacionalidad->isEmpty(), 
-                            'placeholder' => $nacionalidad->isEmpty() ? 'Sin registros' : 'Seleccione una nacionalidad'
+                            'options' => $listaGeneros,
+                            // 'disabled' => $listaGeneros->isEmpty(),
+                            // 'placeholder' => $listaGeneros->isEmpty() ? 'Sin registros' : 'Seleccione género'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
+                    ],
+                    //Oficios
+                    [
+                        'label' => 'Oficios',
+                        'name' => 'oficiosId',
+                        'required' => true,
+                        'control' => [
+                            'element' => 'select',
+                            'type' => 'simple',
+                            'classList' => ['form-select', 'mb-4'],
+                            'options' => $listaOficios,
+                            'disabled' => $listaOficios->isEmpty(),
+                            'placeholder' => $listaOficios->isEmpty() ? 'Sin registros' : 'Seleccione oficio'
+                        ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
+                    ],
+                    //Nacionalidad
+                    [
+                        'label' => 'Nacionalidad',
+                        'name' => 'nacionalidadId',
+                        'required' => true,
+                        'control' => [
+                            'element' => 'select',
+                            'type' => 'simple',
+                            'classList' => ['form-select', 'mb-4'],
+                            'options' => $listaNacionalidad,
+                            'disabled' => $listaNacionalidad->isEmpty(),
+                            'placeholder' => $listaNacionalidad->isEmpty() ? 'Sin registros' : 'Seleccione oficio'
+                        ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
                     //Posicion
                     [
                         'label' => 'Posicion',
-                        'name' => 'posiciones_id',
+                        'name' => 'posicionesId',
                         'required' => true,
                         'control' => [
                             'element' => 'select',
+                            'type' => 'simple',
                             'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesPosiciones,
-                            'disabled' => $posiciones->isEmpty(), 
-                            'placeholder' => $posiciones->isEmpty() ? 'Sin registros' : 'Seleccione posicion'
+                            'options' => $listaPosiciones,
+                            // 'disabled' => $listaPosiciones->isEmpty(),
+                            // 'placeholder' => $listaPosiciones->isEmpty() ? 'Sin registros' : 'Seleccione posicion'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
                     //Dorsal
                     [
                         'label' => 'Dorsal',
-                        'name' => 'camisetas_id',
+                        'name' => 'camisetasId',
                         'required' => true,
                         'control' => [
                             'element' => 'select',
+                            'type' => 'simple',
                             'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesCamisetas,
-                            'disabled' => $camisetas->isEmpty(), 
-                            'placeholder' => $camisetas->isEmpty() ? 'Sin registros' : 'Seleccione dorsal'
+                            'options' => $listaCamisetas,
+                            // 'disabled' => $listaCamisetas->isEmpty(),
+                            // 'placeholder' => $listaCamisetas->isEmpty() ? 'Sin registros' : 'Seleccione dorsal'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
                     //Pierna dominante
                     [
@@ -339,32 +239,18 @@ class JugadoresController extends Controller
                         'required' => true,
                         'control' => [
                             'element' => 'select',
+                            'type' => 'simple',
                             'classList' => ['form-select', 'mb-4'],
-                            'options' => $opcionesPiernaDominante,
-                            'disabled' => $piernaDominante->isEmpty(), 
-                            'placeholder' => $piernaDominante->isEmpty() ? 'Sin registros' : 'Seleccione pierna'
+                            'options' => $listaPiernaDominante,
+                            // 'disabled' => $listaPiernaDominante->isEmpty(),
+                            // 'placeholder' => $listaPiernaDominante->isEmpty() ? 'Sin registros' : 'Seleccione pierna'
                         ],
+                        'access' => [
+                            'editableIn' => ['new' => true, 'edit' => true, 'show' => false, 'up' => false, 'down' => false, 'delete' => false],
+                            'readIn' => ['new' => true, 'edit' => true, 'show' => true, 'up' => true, 'down' => true, 'delete' => true]
+                        ]
                     ],
                 ],
-                'access' => [
-                    'editableIn' => [
-                        'new' => true,
-                        'edit' => true,
-                        'show' => false,
-                        'up' => false,
-                        'down' => false,
-                        'delete' => false
-                    ],
-                    'readIn' => [
-                        'new' => true,
-                        'edit' => true,
-                        'show' => true,
-                        'up' => true,
-                        'down' => true,
-                        'delete' => true
-                    ]
-                ],
-                
             ],
             'dev' => [
                 'nombre' => 'Instituto Profesional San Sebastián',
@@ -372,80 +258,80 @@ class JugadoresController extends Controller
                 'logo' => 'https://ipss.cl/wp-content/uploads/2025/04/cropped-LogoIPSS_sello50anos_webipss.png'
             ]
         ];
- 
+
         return view('backoffice/jugadores/index', compact('datos', 'user', 'lista'));
     }
- 
-    public function store(Request $request)
-{
-    if (!Auth::check()) {
-        return redirect()->route('/')->withErrors('Debe iniciar sesión.');
-    }
 
-    $validated = $request->validate([
-        'nombre'              => ['required', 'string', 'min:3', 'max:50'],
-        'apellido'            => ['required', 'string', 'min:2', 'max:50'],
-        'rut'                 => ['required', 'string', 'unique:users,rut'],
-        // 'edad'              => ['required', 'integer', 'min:0'], // <- comentado o eliminado
-        'genero_id'            => ['required', Rule::exists('genero', 'id')],
-        //'telefono'            => ['required', 'string', 'min:3'],
-        //'correo'              => ['required', 'email', 'unique:persona,correo'],
-        //'direccion'           => ['required', 'string', 'min:3', 'max:100'],
-        // cargo eliminado
-        //'comuna_id'           => ['required', Rule::exists('comunas', 'id')],
-        'oficios_id'          => ['required', Rule::exists('oficios', 'id')],
-        //'medio_contacto_id'   => ['required', Rule::exists('medio_contacto', 'id')],
-        'nacionalidad_id'     => ['required', Rule::exists('nacionalidad', 'id')],
-        'posiciones_id'       => ['required', Rule::exists('posiciones', 'id')],
-        'pierna_dominante_id' => ['required', Rule::exists('pierna_dominante', 'id')],
-        'fechaNacimiento'     => ['required', 'date'],
-        'camisetas_id'       => ['required', Rule::exists('camisetas', 'id')],
-    ], $this->messages);
-    
-    $idCargoJugador = 2; 
-    
-    // Cálculo de edad
-    $fechaNacimiento = $validated['fechaNacimiento'];
-    $edad = Carbon::parse($fechaNacimiento)->age;
-    
-    $personaService = app(PersonaService::class);
-    $persona = $personaService->crearConUsuario([
-        'nombre'             => $validated['nombre'],
-        'apellido'           => $validated['apellido'],
-        'rut'                => $validated['rut'],
-        'edad'               => $edad, // <-- edad calculada
-        //'telefono'           => $validated['telefono'],
-        //'correo'             => $validated['correo'],
-        //'direccion'          => $validated['direccion'],
-        'nacionalidad_id'    => $validated['nacionalidad_id'],
-        //'comuna_id'          => $validated['comuna_id'],
-        'oficios_id'         => $validated['oficios_id'],
-        //'medio_contacto_id'  => $validated['medio_contacto_id'],
-        'cargoId'            => $idCargoJugador,
-        'generoId'           => $validated['genero_id'],
-        'fechaNacimiento'    => $fechaNacimiento,
-        'camisetas_id'      => $validated['camisetas_id']
-    ]);
-        
-    
+    public function store(Request $request)
+    {
+        if (!Auth::check()) {
+            return redirect()->route('/')->withErrors('Debe iniciar sesión.');
+        }
+
+        $validated = $request->validate([
+            'nombre'              => ['required', 'string', 'min:3', 'max:50'],
+            'apellido'            => ['required', 'string', 'min:2', 'max:50'],
+            'rut'                 => ['required', 'string', 'unique:users,rut'],
+            // 'edad'              => ['required', 'integer', 'min:0'], // <- comentado o eliminado
+            'generoId'            => ['required', Rule::exists('genero', 'id')],
+            //'telefono'            => ['required', 'string', 'min:3'],
+            //'correo'              => ['required', 'email', 'unique:persona,correo'],
+            //'direccion'           => ['required', 'string', 'min:3', 'max:100'],
+            // cargo eliminado
+            //'comuna_id'           => ['required', Rule::exists('comunas', 'id')],
+            'oficiosId'          => ['required', Rule::exists('oficios', 'id')],
+            //'medio_contacto_id'   => ['required', Rule::exists('medio_contacto', 'id')],
+            'nacionalidadId'     => ['required', Rule::exists('nacionalidad', 'id')],
+            'posicionesId'       => ['required', Rule::exists('posiciones', 'id')],
+            'pierna_dominante_id' => ['required', Rule::exists('pierna_dominante', 'id')],
+            'fechaNacimiento'     => ['required', 'date'],
+            'camisetasId'       => ['required', Rule::exists('camisetas', 'id')],
+        ], $this->messages);
+
+        $idCargoJugador = 2;
+
+        // Cálculo de edad
+        $fechaNacimiento = $validated['fechaNacimiento'];
+        $edad = Carbon::parse($fechaNacimiento)->age;
+
+        $personaService = app(PersonaService::class);
+        $persona = $personaService->crearConUsuario([
+            'nombre'             => $validated['nombre'],
+            'apellido'           => $validated['apellido'],
+            'rut'                => $validated['rut'],
+            'edad'               => $edad, // <-- edad calculada
+            //'telefono'           => $validated['telefono'],
+            //'correo'             => $validated['correo'],
+            //'direccion'          => $validated['direccion'],
+            'nacionalidadId'    => $validated['nacionalidadId'],
+            //'comuna_id'          => $validated['comuna_id'],
+            'oficiosId'         => $validated['oficiosId'],
+            //'medio_contacto_id'  => $validated['medio_contacto_id'],
+            'cargoId'            => $idCargoJugador,
+            'generoId'           => $validated['generoId'],
+            'fechaNacimiento'    => $fechaNacimiento,
+            'camisetasId'      => $validated['camisetasId']
+        ]);
+
+
         // Crear jugador vinculado a la persona
         JugadoresModel::create([
-            'persona_id'          => $persona->id,
+            'personaId'          => $persona->id,
             'pierna_dominante_id'  => $validated['pierna_dominante_id'],
-            'posiciones_id'         => $validated['posiciones_id'],
-            'camisetas_id'       => $validated['camisetas_id'],
+            'posicionesId'         => $validated['posicionesId'],
+            'camisetasId'       => $validated['camisetasId'],
             'activo'              => true,
         ]);
-    
+
         return redirect()->back()->with('success', 'Jugador creado exitosamente.');
     }
- 
+
     public function update(Request $request, $id)
     {
         if (!Auth::check()) {
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
- 
+
         $request->validate([
             'nombre' => ['required', 'string', 'min:3', 'max:50'],
             // 'edad' => ['required', 'integer', 'min:0'],
@@ -453,7 +339,7 @@ class JugadoresController extends Controller
             //'telefono' => ['required', 'string', 'min:0'],
             //'correo' => ['required', 'email'],
         ], $this->messages);
- 
+
         $jugador = JugadoresModel::findOrFail($id);
         $jugador->update([
             'nombre' => $request->nombre,
@@ -463,66 +349,65 @@ class JugadoresController extends Controller
             //'correo' => $request->correo,
             //'nivel' => $request->nivel,
         ]);
- 
+
         return redirect()->back()->with('success', 'Jugador actualizado exitosamente.');
     }
- 
+
     public function down(Request $request, $_id)
     {
         if (!Auth::check()) {
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
-    
+
         $jugador = JugadoresModel::with('persona.user')->find($_id);
-    
+
         if (!$jugador || !$jugador->persona || !$jugador->persona->user) {
             return redirect()->back()->withErrors('Jugador o usuario no encontrado.');
         }
-    
+
         // Cambiar el estado en la tabla users
         if ($jugador->persona->user->activo == 1) {
             $jugador->persona->user->activo = 0;
             $jugador->persona->user->save();
-    
+
             // También cambiar el estado del jugador
             $jugador->activo = 0;
             $jugador->save();
-    
+
             return redirect()->back()->with('success', 'Jugador desactivado exitosamente.');
         }
-    
+
         return redirect()->back()->withErrors('No se realizaron cambios.');
     }
-    
+
 
     public function up(Request $request, $_id)
     {
         if (!Auth::check()) {
             return redirect()->route('/')->withErrors('Debe iniciar sesión.');
         }
-    
+
         $jugador = JugadoresModel::with('persona.user')->find($_id);
-    
+
         if (!$jugador || !$jugador->persona || !$jugador->persona->user) {
             return redirect()->back()->withErrors('Jugador o usuario no encontrado.');
         }
-    
+
         // Cambiar el estado en la tabla users
         if ($jugador->persona->user->activo == 0) {
             $jugador->persona->user->activo = 1;
             $jugador->persona->user->save();
-    
+
             // También cambiar el estado del jugador
             $jugador->activo = 1;
             $jugador->save();
-    
+
             return redirect()->back()->with('success', 'Jugador activado exitosamente.');
         }
-    
+
         return redirect()->back()->withErrors('No se realizaron cambios.');
     }
-    
 
-// fin de desactivar y activar
+
+    // fin de desactivar y activar
 }
- 

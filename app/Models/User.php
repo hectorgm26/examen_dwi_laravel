@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return 'rut';
     }
+
+    public function genero()
+{
+    return $this->belongsTo(GeneroModel::class, 'generoId');
+}
 }

@@ -10,7 +10,7 @@ class JugadoresModel extends Model
 
     protected $fillable = [
         'personaId',
-        'piernaDominanteId',
+        'pierna_dominante_id',
         'posicionesId',
         'camisetasId',
         'activo',
@@ -21,10 +21,10 @@ class JugadoresModel extends Model
     {
         return $this->belongsToMany(
             PosicionModel::class,
-            'jugadorPosicion',
+            'jugador_posicion',
             'jugadorId',
             'posicionId',
-            'piernaDominanteId'
+            'pierna_dominante_id'
         );
     }
 
@@ -38,16 +38,16 @@ class JugadoresModel extends Model
 
     public function posicion()
     {
-        return $this->belongsTo(PosicionModel::class, 'posiciones_id');
+        return $this->belongsTo(PosicionModel::class, 'posicionesId');
     }
 
     public function camisetas()
     {
-        return $this->belongsTo(CamisetasModel::class, 'camisetas_id');
+        return $this->belongsTo(CamisetasModel::class, 'camisetasId');
     }
 
     public function persona()
     {
-        return $this->belongsTo(PersonaModel::class, 'persona_id');
+        return $this->belongsTo(PersonaModel::class, 'personaId');
     }
 }

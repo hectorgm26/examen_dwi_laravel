@@ -13,36 +13,41 @@ return new class extends Migration
     {
         Schema::create('persona', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->unique()->constrained('users')->onDelete('cascade');
-            $table->foreignId('genero_id')->nullable()->constrained('genero')->onDelete('set null');
+            $table->foreignId('userId')->unique()->constrained('users')->onDelete('cascade');
+            $table->foreignId('generoId')->nullable()->constrained('genero')->onDelete('set null');
             //$table->string('correo')->unique();
             //$table->string('telefono')->nullable();
             //$table->string('direccion')->nullable();
             //$table->foreignId('comuna_id')->nullable()->constrained('comunas')->onDelete('set null');
-            $table->foreignId('oficios_id')->nullable()->constrained('oficios')->onDelete('set null');
+            $table->foreignId('oficiosId')->nullable()->constrained('oficios')->onDelete('set null');
             //$table->foreignId('medio_contacto_id')->nullable()->constrained('medio_contacto')->onDelete('set null');
-            $table->foreignId('nacionalidad_id')->nullable()->constrained('nacionalidad')->onDelete('set null');
+            $table->foreignId('nacionalidadId')->nullable()->constrained('nacionalidad')->onDelete('set null');
             $table->integer('edad')->nullable();
             $table->timestamps();
         });
 
         Schema::create('jugadores', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('persona_id')->unique()->constrained('persona')->onDelete('cascade');
+            $table->foreignId('personaId')->unique()->constrained('persona')->onDelete('cascade');
+
             // Clave foránea a pierna_dominante
             $table->foreignId('pierna_dominante_id')
                 ->constrained('pierna_dominante')
                 ->onDelete('restrict');
+
             // Clave foránea a posiciones
-            $table->foreignId('posiciones_id')
+            $table->foreignId('posicionesId')
                 ->constrained('posiciones')
                 ->onDelete('restrict');
+
             // Clave foránea a camisetas
-            $table->foreignId('camisetas_id')
+            $table->foreignId('camisetasId')
                 ->constrained('camisetas')
                 ->onDelete('restrict');
+
             // Estado activo
             $table->boolean('activo')->default(true);
+
             $table->timestamps();
         });
 
@@ -76,14 +81,13 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        
+
         Schema::create('equipo', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->boolean('activo')->default(true);
             $table->timestamps();
         });
-
     }
 
     /**

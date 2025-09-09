@@ -15,10 +15,10 @@
                 <th>Posiciones de Juego</th>
                 <th>Pierna Dominante</th>
                 <th>Dorsal</th>
-                {{--<th>Comuna</th>--}}
-                {{--<th>Direccion</th>--}}
+                {{-- <th>Comuna</th> --}}
+                {{-- <th>Direccion</th> --}}
                 <th>Oficio</th>
-                {{--<th>Medio de contacto</th>--}}
+                {{-- <th>Medio de contacto</th> --}}
                 {{-- <th>Cargo</th> --}}
                 <th>Estado</th>
                 <th>Acciones</th>
@@ -30,9 +30,9 @@
                     <td class="text-center">{{ $jugador->persona?->user?->id ?? 'N/A' }}</td>
                     <td class="text-center">{{ $jugador->persona?->user?->rut ?? 'N/A' }}</td>
                     <td>{{ $jugador->persona?->user?->name ?? 'N/A' }}</td>
-<td>{{ $jugador->persona?->user?->lastname ?? 'N/A' }}</td>
+                    <td>{{ $jugador->persona?->user?->lastname ?? 'N/A' }}</td>
 
-{{-- 
+                    {{-- 
 <td>
     {{ $jugador->persona?->user?->fechaNacimiento
         ? \Carbon\Carbon::parse($jugador->persona->user->fechaNacimiento)->format('d-m-Y')
@@ -41,7 +41,9 @@
 --}}
                     <td>{{ $jugador->persona?->edad ?? 'N/A' }}</td>
 
-                    <td>{{ $jugador->persona?->user?->genero?->nombre ?? 'N/A' }}</td>
+                    <td>
+                        {{ $jugador->persona?->user?->genero?->nombre ?? 'N/A' }}
+                    </td>
 
                     <td>{{ $jugador->persona?->nacionalidad?->nombre ?? 'N/A' }}</td>
 
@@ -53,11 +55,12 @@
                         {{-- {{ $jugador->posiciones?->pluck('nombre')->implode(', ') ?? 'N/A' }} --}}
                     </td>
                     <td>{{ $jugador->piernaDominante?->nombre ?? 'N/A' }}</td>
+
                     <td>{{ $jugador->camisetas?->nombre ?? 'N/A' }}</td>
-                    {{--<td>{{ $jugador->persona?->comuna?->nombre ?? 'N/A' }}</td>--}}
-                    {{--<td>{{ $jugador->persona?->direccion ?? 'N/A' }}</td>--}}
+                    {{-- <td>{{ $jugador->persona?->comuna?->nombre ?? 'N/A' }}</td> --}}
+                    {{-- <td>{{ $jugador->persona?->direccion ?? 'N/A' }}</td> --}}
                     <td>{{ $jugador->persona?->oficio?->nombre ?? 'N/A' }}</td>
-                    {{--<td>{{ $jugador->persona?->medioContacto?->nombre ?? 'N/A' }}</td>--}}
+                    {{-- <td>{{ $jugador->persona?->medioContacto?->nombre ?? 'N/A' }}</td> --}}
                     {{-- <td>{{ $jugador->persona?->user?->cargo?->nombre ?? 'N/A' }}</td> --}}
                     <td class="text-center">
                         @if ($jugador->activo == 1)
@@ -69,7 +72,8 @@
                     <td class="text-center">
                         <!-- Botones de acción -->
                         @if ($jugador->activo == 1)
-                            <form action="{{ route($datos['mantenedor']['routes']['down'], $jugador->id) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route($datos['mantenedor']['routes']['down'], $jugador->id) }}"
+                                method="POST" class="d-inline-block">
                                 @csrf
                                 <button type="submit" class="btn btn-danger">
                                     <i class="icon-base ti tabler-arrow-down"></i>
@@ -78,7 +82,8 @@
                         @endif
 
                         @if ($jugador->activo == 0)
-                            <form action="{{ route($datos['mantenedor']['routes']['up'], $jugador->id) }}" method="POST" class="d-inline-block">
+                            <form action="{{ route($datos['mantenedor']['routes']['up'], $jugador->id) }}"
+                                method="POST" class="d-inline-block">
                                 @csrf
                                 <button type="submit" class="btn btn-primary">
                                     <i class="icon-base ti tabler-arrow-up"></i>
@@ -97,24 +102,25 @@
 </div>
 
 <style>
-/* Scroll horizontal responsivo */
-.table-responsive {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch; /* Smooth scrolling en iOS */
-}
+    /* Scroll horizontal responsivo */
+    .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        /* Smooth scrolling en iOS */
+    }
 
-/* Columna de acciones fija al lado derecho */
-.sticky-actions {
-    position: sticky;
-    right: 0;
-    background-color: #fff;
-    z-index: 10;
-    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
-}
+    /* Columna de acciones fija al lado derecho */
+    .sticky-actions {
+        position: sticky;
+        right: 0;
+        background-color: #fff;
+        z-index: 10;
+        box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+    }
 
-/* Evitar que el texto se rompa en las celdas */
-.datatables-users th,
-.datatables-users td {
-    white-space: nowrap;
-}
+    /* Evitar que el texto se rompa en las celdas */
+    .datatables-users th,
+    .datatables-users td {
+        white-space: nowrap;
+    }
 </style>

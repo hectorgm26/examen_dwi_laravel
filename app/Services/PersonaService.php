@@ -1,10 +1,10 @@
 <?php
- 
+
 namespace App\Services;
- 
+
 use App\Models\User;
 use App\Models\PersonaModel;
- 
+
 class PersonaService
 {
     public function crearConUsuario(array $data): PersonaModel
@@ -18,17 +18,17 @@ class PersonaService
             'generoId' => $data['generoId'],
             'fechaNacimiento' => $data['fechaNacimiento'],
         ]);
- 
+
         return PersonaModel::create([
-            'user_id' => $user->id,
+            'userId' => $user->id,
             'edad' => $data['edad'],
             //'correo' => $data['correo'],
             //'comuna_id' => $data['comuna_id'],
-            'oficios_id' => $data['oficios_id'],
+            'oficiosId' => $data['oficiosId'],
             //'medio_contacto_id' => $data['medio_contacto_id'],
             //'telefono' => $data['telefono'],
             //'direccion' => $data['direccion'],
-            'nacionalidad_id' => $data['nacionalidad_id'],
+            'nacionalidadId' => $data['nacionalidadId'],
         ]);
     }
 }
