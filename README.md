@@ -3019,7 +3019,7 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                                         {{-- Botón eliminar --}}
                                                         <button type="button" class="btn btn-sm btn-danger"
                                                                 onclick="document.getElementById('medio-{{ $medio->id }}').remove();">
-                                                            <i class="ti ti-trash"></i> Eliminar
+                                                            <span class="iconify" data-icon="tabler-trash" data-inline="false"></span> No agregar
                                                         </button>
                                                     </div>
                                         
