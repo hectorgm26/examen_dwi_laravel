@@ -2520,11 +2520,21 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                     <div class="card-body">
                                         <p class="card-text text-uppercase text-body-secondary small mb-0">Datos Personales</p>
                                         <ul class="list-unstyled my-3 py-1">
+
+
                                             <li class="d-flex align-items-center mb-4">
                                                 <i class="icon-base ti tabler-user icon-lg"></i><span
                                                     class="fw-medium mx-2">Nombre:</span> <span>{{ $user->name }}
                                                     {{ $user->lastname }}</span>
                                             </li>
+
+                                            {{-- ASI SE ACCEDE AL NOMBRE DEL ROL --}}
+                                            <li class="d-flex align-items-center mb-4">
+                                                <i class="icon-base ti tabler-crown icon-lg"></i><span
+                                                    class="fw-medium mx-2">Rol:</span>
+                                                <span>{{ auth()->user()->getRoleNames()->first() ?? 'Sin rol' }}</span>
+                                            </li>
+
                                             <li class="d-flex align-items-center mb-4">
                                                 <i class="icon-base ti tabler-check icon-lg"></i><span
                                                     class="fw-medium mx-2">Estado:</span>
@@ -2552,14 +2562,6 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                                 <span class="fw-medium mx-2">Fecha de nacimiento:</span>
                                                 <span>{{ $user->fechaNacimiento ? \Carbon\Carbon::parse($user->fechaNacimiento)->format('d-m-Y') : 'Sin asignar' }}</span>
                                             </li>
-
-                                            {{-- ASI SE ACCEDE AL NOMBRE DEL ROL --}}
-                                            <li class="d-flex align-items-center mb-4">
-                                                <i class="icon-base ti tabler-crown icon-lg"></i><span
-                                                    class="fw-medium mx-2">Rol:</span>
-                                                <span>{{ auth()->user()->getRoleNames()->first() ?? 'Sin rol' }}</span>
-                                            </li>
-
 
                                             <!-- Cargo -->
                                             <li class="d-flex align-items-center mb-4">
