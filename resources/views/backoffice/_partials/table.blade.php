@@ -59,7 +59,13 @@
                     @endif
                     {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
                     @if (isset($datos['mantenedor']['has_nombre']) && $datos['mantenedor']['has_nombre'])
-                        <td class="text-center">{{ $item->Nombre }}</td>
+                    <td class="text-center">
+                        @if ($item->nombre)
+                            {{ $item->nombre }}
+                        @else
+                            {{ $item->name }}
+                        @endif
+                    </td>
                     @endif
                     {{-- Directiva para mostrar la celda Ubicación condicionalmente --}}
                     @if (isset($datos['mantenedor']['has_ubicacion']) && $datos['mantenedor']['has_ubicacion'])

@@ -1,29 +1,34 @@
 <?php
 
-use App\Http\Controllers\AsideController;
-use App\Http\Controllers\CamisetasController;
-use App\Http\Controllers\CampeonatoController;
-use App\Http\Controllers\CargosController;
-use App\Http\Controllers\CategoriaController;
-use App\Http\Controllers\ComunasController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DiasSemanaController;
-use App\Http\Controllers\EntrenamientosController;
+use App\Http\Controllers\AsideController;
+use App\Http\Controllers\RolesController;
+use App\Http\Controllers\CargosController;
 use App\Http\Controllers\GeneroController;
+use App\Http\Controllers\ComunasController;
 use App\Http\Controllers\HoraFinController;
-use App\Http\Controllers\HorainicioController;
+use App\Http\Controllers\OficiosController;
+use App\Http\Controllers\PremiosController;
+use App\Http\Controllers\PosicionController;
+use App\Http\Controllers\RecintosController;
+use App\Http\Controllers\CamisetasController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\JugadoresController;
-use App\Http\Controllers\MedioContactoController;
+use App\Http\Controllers\CampeonatoController;
+use App\Http\Controllers\DiasSemanaController;
+use App\Http\Controllers\HorainicioController;
 use App\Http\Controllers\MediosPagosController;
 use App\Http\Controllers\NacionalidadController;
-use App\Http\Controllers\OficiosController;
+use Spatie\Permission\Middleware\RoleMiddleware;
+use App\Http\Controllers\MedioContactoController;
+use App\Http\Controllers\EntrenamientosController;
 use App\Http\Controllers\PiernaDominanteController;
-use App\Http\Controllers\PosicionController;
-use App\Http\Controllers\PremiosController;
-use App\Http\Controllers\RecintosController;
-use App\Http\Controllers\RolesController;
+use Spatie\Permission\Middleware\PermissionMiddleware;
+
+Route::aliasMiddleware('role', RoleMiddleware::class);
+Route::aliasMiddleware('permission', PermissionMiddleware::class);
 
 Route::get('/', function () {
     return view('landing/index');
@@ -213,3 +218,14 @@ Route::post('/backoffice/entrenamiento', [EntrenamientosController::class, 'stor
 Route::post('/backoffice/entrenamiento/down/{_id}', [EntrenamientosController::class, 'down'])->name('backoffice.entrenamiento.down');
 Route::post('/backoffice/entrenamiento/up/{_id}', [EntrenamientosController::class, 'up'])->name('backoffice.entrenamiento.up');
 Route::post('/backoffice/entrenamiento/destroy/{_id}', [EntrenamientosController::class, 'destroy'])->name('backoffice.entrenamiento.destroy');
+
+Route::get('/backoffice/roles', [RolesController::class, 'index'])->name('backoffice.roles.index');
+    Route::post('/backoffice/roles', [RolesController::class, 'store'])->name('backoffice.roles.new');
+    Route::post('/backoffice/roles/down/{_id}', [RolesController::class, 'down'])->name('backoffice.roles.down');
+    Route::post('/backoffice/roles/up/{_id}', [RolesController::class, 'up'])->name('backoffice.roles.up');
+    Route::post('/backoffice/roles/destroy/{_id}', [RolesController::class, 'destroy'])->name('backoffice.roles.destroy');
+
+    Route::put('/backoffice/roles/{id}/permissions', [RolesController::class, 'updatePermissions'])
+        ->name('backoffice.roles.update.permissions');
+    Route::post('/backoffice/roles/{id}/permissions/toggle', [RolesController::class, 'togglePermission'])
+        ->name('backoffice.roles.toggle.permission');

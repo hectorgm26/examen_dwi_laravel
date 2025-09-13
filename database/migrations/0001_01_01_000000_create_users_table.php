@@ -17,9 +17,9 @@ return new class extends Migration
             $table->string('name');
             $table->string('lastname');
             $table->string('password')->nullable();
-            $table->string('fechaNacimiento');
-            $table->string('generoId');
-            $table->string('cargoId')->default(1);
+            $table->string('fechaNacimiento')->nullable();
+            $table->string('generoId')->nullable();
+            $table->string('cargoId')->nullable()->default(1);
             $table->rememberToken();
             $table->timestamps();
             $table->boolean('activo')->default(true);
