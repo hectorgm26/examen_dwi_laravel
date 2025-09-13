@@ -2588,29 +2588,38 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                         <!-- Medios de contacto -->
                                         <p class="card-text text-uppercase text-body-secondary small mb-0">Medios de contacto</p>
                                         <ul class="list-unstyled my-3 py-1">
-                                            @foreach ($user->mediosDeContactoVisibles as $contacto)
-                                                @php
-                                                    // Usar el nombre del medio como tipo
-                                                    $tipo = strtolower($contacto->nombre ?? 'otro');
-
-                                                    $icon = match ($tipo) {
-                                                        'telefono' => 'ti tabler-phone-call',
-                                                        'wsp', 'whatsapp' => 'ti tabler-brand-whatsapp',
-                                                        'email' => 'ti tabler-mail',
-                                                        'skype' => 'ti tabler-messages',
-                                                        'twitter' => 'ti tabler-brand-twitter',
-                                                        default => 'ti tabler-info-circle',
-                                                    };
-                                                @endphp
+                                            @if($user->mediosDeContactoVisibles->isEmpty())
                                                 <li class="d-flex align-items-center mb-4">
-                                                    <i class="icon-base {{ $icon }} icon-lg"></i>
-                                                    <span class="fw-medium mx-2">{{ $contacto->nombre }}:</span>
-                                                    <span>{{ $contacto->pivot->valor }}</span>
+                                                    <i class="icon-base ti tabler-info-circle icon-lg"></i>
+                                                    <span class="text-muted fst-italic">No definido por el momento</span>
                                                 </li>
-                                            @endforeach
-
-
+                                                <li class="mb-3">
+                                                    <a href="{{ route('backoffice.user.contact') }}" class="btn btn-sm btn-primary">
+                                                        <i class="icon-base ti tabler-users icon-sm me-1_5"></i> Agregar medio de contacto
+                                                    </a>
+                                                </li>
+                                            @else
+                                                @foreach ($user->mediosDeContactoVisibles as $contacto)
+                                                    @php
+                                                        $tipo = strtolower($contacto->nombre ?? 'otro');
+                                                        $icon = match ($tipo) {
+                                                            'telefono' => 'ti tabler-phone-call',
+                                                            'wsp', 'whatsapp' => 'ti tabler-brand-whatsapp',
+                                                            'email' => 'ti tabler-mail',
+                                                            'skype' => 'ti tabler-messages',
+                                                            'twitter' => 'ti tabler-brand-twitter',
+                                                            default => 'ti tabler-info-circle',
+                                                        };
+                                                    @endphp
+                                                    <li class="d-flex align-items-center mb-4">
+                                                        <i class="icon-base {{ $icon }} icon-lg"></i>
+                                                        <span class="fw-medium mx-2">{{ $contacto->nombre }}:</span>
+                                                        <span>{{ $contacto->pivot->valor }}</span>
+                                                    </li>
+                                                @endforeach
+                                            @endif
                                         </ul>
+
                                     </div>
                                 </div>
                                 <!--/ About User -->
@@ -2911,8 +2920,8 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                         <div class="col-12">
                             <div class="card mb-6">
                                 <div class="card-body">
-                                    <p class="card-text text-uppercase text-body-secondary small mb-4">
-                                        Datos de Contacto
+                                    <p class="card-text text-uppercase text-body-secondary small mb-4 fs-5">
+                                        Cambio de datos personales
                                     </p>
 
                                     <form action="{{ route('backoffice.user.contact.update') }}" method="post">
