@@ -2941,7 +2941,7 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                             @endforeach
                                         </select>
                                         <small class="text-muted d-block mb-3">
-                                            {{ $user->generoId ? 'Valor guardado, puede modificarlo si desea.' : 'Seleccione su género.' }}
+                                            {!! $user->generoId ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Seleccione su género.' !!}
                                         </small>
 
                                         {{-- Oficio --}}
@@ -2955,7 +2955,7 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                             @endforeach
                                         </select>
                                         <small class="text-muted d-block mb-3">
-                                            {{ $user->oficioId ? 'Valor guardado, puede modificarlo si desea.' : 'Seleccione su oficio.' }}
+                                            {!! $user->oficioId ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Seleccione su oficio.' !!}
                                         </small>
 
                                         {{-- Nacionalidad --}}
@@ -2969,8 +2969,9 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                             @endforeach
                                         </select>
                                         <small class="text-muted d-block mb-3">
-                                            {{ $user->nacionalidadId ? 'Valor guardado, puede modificarlo si desea.' : 'Seleccione su nacionalidad.' }}
+                                            {!! $user->nacionalidadId ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Seleccione su nacionalidad.' !!}
                                         </small>
+                                        
 
                                         {{-- Comuna --}}
                                         <label class="form-label mt-3 fw-bold fs-5">Comuna</label>
@@ -2983,8 +2984,9 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                               @endforeach
                                           </select>
                                           <small class="text-muted d-block mb-3">
-                                              {{ $user->comunaId ? 'Valor guardado, puede modificarlo si desea.' : 'Seleccione su comuna.' }}
-                                          </small>
+                                            {!! $user->comunaId ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Seleccione su comuna.' !!}
+                                            </small>
+                                        
 
                                         {{-- Fecha de Nacimiento --}}
                                         <label class="form-label mt-3 fw-bold fs-5">Fecha de Nacimiento</label>
@@ -2995,8 +2997,9 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                               value="{{ $fecha }}"
                                               class="form-control mb-1 {{ $user->fechaNacimiento ? 'bg-info bg-opacity-10' : '' }}">
                                         <small class="text-muted d-block mb-3">
-                                            {{ $user->fechaNacimiento ? 'Valor guardado, puede modificarlo si desea.' : 'Ingrese su fecha de nacimiento.' }}
+                                                {!! $user->fechaNacimiento ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Ingrese su fecha de nacimiento.' !!}
                                         </small>
+                                            
 
                                         {{-- Pierna Dominante --}}
                                         <label class="form-label mt-3 fw-bold fs-5">Pierna Dominante</label>
@@ -3009,8 +3012,8 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                             @endforeach
                                         </select>
                                         <small class="text-muted d-block mb-3">
-                                            {{ $user->piernaDominanteId ? 'Valor guardado, puede modificarlo si desea.' : 'Seleccione su pierna dominante.' }}
-                                        </small>
+                                            {!! $user->piernaDominanteId ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Seleccione su pierna dominante.' !!}
+                                        </small>                                        
 
                                         {{-- Medios de Contacto --}}
                                         <br>
@@ -3028,10 +3031,13 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                                         <label class="form-label fw-bold fs-5">{{ $medio->nombre }}</label>
                                         
                                                         {{-- Botón eliminar --}}
+                                                        {{-- Mostrar botón “No agregar” solo si no hay valor guardado --}}
+                                                        @if(!$valor)
                                                         <button type="button" class="btn btn-sm btn-danger"
                                                                 onclick="document.getElementById('medio-{{ $medio->id }}').remove();">
                                                             <span class="iconify" data-icon="tabler-trash" data-inline="false"></span> No agregar
                                                         </button>
+                                                        @endif
                                                     </div>
                                         
                                                     {{-- Campo de valor --}}
@@ -3053,8 +3059,8 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
                                                     </div>
                                         
                                                     <small class="text-muted d-block mt-1">
-                                                        {{ $valor ? 'Valor guardado, puede modificarlo si desea.' : 'Ingrese su ' . strtolower($medio->nombre) }}
-                                                    </small>
+                                                        {!! $valor ? 'Valor guardado, <strong>puede modificarlo si desea.</strong>' : 'Ingrese su ' . strtolower($medio->nombre) !!}
+                                                    </small>                                                    
                                                 </div>
                                             @endforeach
                                         </div>
@@ -3116,6 +3122,7 @@ Route::put('/backoffice/user/contact', [UserController::class, 'updateContacto']
 <script src="/vuexy/assets/js/app-user-view-account.js"></script>
 </body>
 </html>
+
 ~~~
 
 - Vista users/_partials/header.blade.php
